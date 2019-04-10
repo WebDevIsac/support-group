@@ -1,6 +1,33 @@
 import React, { Component } from 'react';
-import './Activities.css';
-import Section from '../Section';
+import Section from './Section';
+import styled from 'styled-components';
+
+const ActivitiesStyled = styled.div`
+	margin: 25px;
+	padding: 15px;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	flex-wrap: wrap-reverse;
+
+	h1 {
+	font-size: 40px;
+	margin: 25px;
+	text-align: left;
+	}
+
+	.activity {
+	width: 25%;
+	/* height: 200px; */
+	flex-direction: column;
+
+	}
+	img {
+	width: 100%;
+
+	}
+
+`;
 
 class Activities extends Component {
 state = {
@@ -36,7 +63,7 @@ componentDidMount() {
 
 render() {
   return (
-<div><h1>Activities</h1>
+<ActivitiesStyled><h1>Activities</h1>
 <div className="container">
 {this.state.posts.map(post => {
     console.log(post);
@@ -52,7 +79,7 @@ render() {
 
   </div>
   <Section />
-</div>
+</ActivitiesStyled>
     )
   }
 }
