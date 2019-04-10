@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import './Social.css';
 import styled from 'styled-components';
 
 const SocialStyled = styled.div`

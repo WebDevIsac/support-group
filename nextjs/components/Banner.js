@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import axios from "axios";
-import './Banner.css';
 import styled from 'styled-components';
 
 const BannerStyled = styled.div`

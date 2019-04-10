@@ -4,9 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "node server.js",
+		"dev": "next -p 8080",
 		"build": "next build",
-		"start": "NODE_PATH=. NODE_ENV=production node server.js"
+		"start": "next start -p 8080"
 	},
 	"keywords": [],
 	"author": "",

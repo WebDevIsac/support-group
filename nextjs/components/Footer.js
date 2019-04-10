@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import './Footer.css';
-import Banner from '../Banner';
-import Social from '../Social';
+import Banner from './Banner';
+import Social from './Social';
 
 import styled from 'styled-components';
 

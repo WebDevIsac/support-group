@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './Activities.css';
-import Section from '../Section';
+import Section from './Section';
 import styled from 'styled-components';
 
 const ActivitiesStyled = styled.div`
