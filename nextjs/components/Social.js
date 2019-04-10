@@ -1,5 +1,20 @@
 import React, {Component} from "react";
 import './Social.css';
+import styled from 'styled-components';
+
+const SocialStyled = styled.div`
+	height: 60px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+
+	.socialItems {
+	width: 100%;
+	height: 100%;
+
+	}
+`;
 
 class Social extends Component {
   state = {
@@ -33,7 +48,7 @@ componentDidMount() {
 
 render() {
 return (
-  <div>
+  <SocialStyled>
     <div className="social">
     {this.state.social.map(soc => {
       console.log(soc);
@@ -46,7 +61,7 @@ return (
       })
     }
     </div>
-  </div>
+  </SocialStyled>
 
     )
   }

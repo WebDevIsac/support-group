@@ -4,6 +4,41 @@ import './Footer.css';
 import Banner from '../Banner';
 import Social from '../Social';
 
+import styled from 'styled-components';
+
+const FooterStyled = styled.div`
+	height: 500px;
+	padding: 50px;
+	background-color: black;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	flex-wrap: wrap;
+
+
+	.menuItems {
+	color: white;
+	width: 20%;
+	height: 200px;
+	}
+
+
+	.social {
+	height: 60px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+
+
+	}
+
+	.socialItems {
+	width: 100%;
+	height: 100%;
+
+	}
+`;
 
 class Footer extends Component {
 state = {
@@ -21,7 +56,7 @@ componentDidMount(){
 
 render() {
 return(
-  <div>
+  <FooterStyled>
     <div className="footer">
     {this.state.posts.map(post => {
       return (
@@ -34,7 +69,7 @@ return(
 
       </div>
       <Banner />
-    </div>
+    </FooterStyled>
 
     )
   }
