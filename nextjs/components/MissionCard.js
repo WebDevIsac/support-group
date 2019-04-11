@@ -3,18 +3,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MissionCardStyled = styled.div`
-	background: #53585F;
+	/* background: #53585F; */
 	width: 500px;
 	height: 700px;
-	color: white;
+	color: #000;
+	margin: 0 15px;
+	box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
 
 	img {
 		width: 100%;
 		border-bottom: 10px solid #FE5A67;
+		max-height: 300px;
 	}
 
 	div {
-		padding: 40px;
+		padding: 0 40px;
 	}
 
 	h1 {
@@ -27,16 +30,15 @@ const MissionCardStyled = styled.div`
 	}
 `;
 
-const MissionCard = ({ card }) => {
+const MissionCard = ({ mission }) => {
+	const textSplit = mission.acf.text.split('<br />');
 	return (
 		<MissionCardStyled>
-			<img src={card.image} alt="photography"/>
+			<img src={mission.acf.image} alt="photography"/>
 			<div>
-				<h1>{card.title}</h1>
-				{card.text.map(text => {
-					return (
-						<p>{text}</p>
-					)
+				<h1>{mission.acf.header}</h1>
+				{textSplit.map((text, index) => {
+					return <p key={index}>{text}</p>
 				})}
 			</div>
 		</MissionCardStyled>

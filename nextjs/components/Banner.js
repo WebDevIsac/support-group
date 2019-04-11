@@ -22,37 +22,35 @@ const BannerStyled = styled.div`
 `;
 
 class Banner extends Component {
-  state = {
-    banner: [],
+  	state = {
+    	banner: [],
+	}
 
-}
+	componentDidMount(){
+		axios.get(`http://localhost/wp-json/wp/v2/banner`)
+		.then(response => {
+			this.setState({ banner: response.data });
 
-componentDidMount(){
-  axios.get(`http://localhost:8888/wp-json/wp/v2/banner`)
-  .then(res => {
-      this.setState({ banner: res.data });
+		})
+	}
 
-  })
-}
-
-render() {
-return (
-  <BannerStyled>
-    <div className="banner">
-    {this.state.banner.map(bann => {
-      console.log(bann);
-      return (
-      <div className="bannerItems">
-        <p href="#" dangerouslySetInnerHTML={{__html:bann.content.rendered}}></p>
-      </div>
-        )
-      })
-    }
-    </div>
-  </BannerStyled>
-
-    )
-  }
+	render() {
+		return (
+			<BannerStyled>
+				<div className="banner">
+					{
+						this.state.banner.map(item => {
+						return (
+							<div className="bannerItems" key={item.id}>
+								<p href="#" dangerouslySetInnerHTML={{__html:item.content.rendered}}></p>
+							</div>
+						)
+						})
+					}
+				</div>
+			</BannerStyled>
+		)
+	}
 }
 
 

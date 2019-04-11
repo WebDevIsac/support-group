@@ -28,17 +28,21 @@ const NavbarStyled = styled.nav`
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		align-items: center;
-		width: 75%;
+		align-items: flex-end;
+		width: 65%;
 		padding-inline-start: 0;
+		margin-block-start: 0;
+		margin-block-end: 0;
 		margin-left: 50px;
+		height: 60px;
 	}
 
 	ul a {
 		color: black;
 		text-decoration: none;
 		font-weight: bold;
-		font-size: 20px;
+		font-size: var(--h3-size);
+		font-weight: var(--h3-weight);
 	}
 
 	ul li {
@@ -46,13 +50,18 @@ const NavbarStyled = styled.nav`
 	}
 
 	.tools {
-		height: 100%;
+		height: 60px;
+		padding: 20px 0;
+		position: relative;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
-		align-items: center;
+		align-items: flex-end;
 		width: 20%;
 		background: var(--pink);
+		color: white;
+		font-size: var(--h3-size);
+		font-weight: var(--h3-weight);
 	}
 
 	.tools div {
@@ -61,30 +70,40 @@ const NavbarStyled = styled.nav`
 	}
 
 
-	.branches {
-		position: fixed;
+	.menu {
+		position: absolute;
 		top: 0;
-		right: 0;
 		width: 100px;
-		margin-top: 80px;
-		margin-right: 5%;
+		margin: 0;
+		height: initial;
+		margin-top: 90px;
+		margin-left: -20px;
 		padding: 10px 25px;
-		background: lightgrey;
+		background: #212121;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		align-items: center;
-		transition: transform 0.5s ease-in;
+		align-items: flex-start;
+		transition: transform 0.2s ease-in;
 		transform: translateY(-130%);
-
 	}
 
-	.branches li {
+	#branches {
+		left: 0;
+	}
+
+	#languages {
+		right: 0;
+		margin-right: 20px;
+	}
+
+	.menu li {
 		margin: 10px 0;
 		cursor: pointer;
 	}
 
-	.branches li a {
+	.menu li a {
+		color: white;
 		font-size: 16px;
 	}
 
@@ -97,10 +116,19 @@ class Navbar extends Component {
 	
 	state = {
 		language: "EN",
-		branches: []
+		menu: [],
+		branches: [],
+		languages: []
 	}
 
 	componentDidMount () {
+		axios.get('http://localhost/wp-json/wp/v2/pages')
+		.then(response => {
+			this.setState({
+				menu: response.data
+			});
+		});
+
 		axios.get('http://localhost/wp-json/wp/v2/branches')
 		.then(response => {
 			this.setState({
@@ -108,6 +136,12 @@ class Navbar extends Component {
 			});
 		});
 
+		axios.get('http://localhost/wp-json/wp/v2/languages?order=asc')
+		.then(response => {
+			this.setState({
+				languages: response.data
+			})
+		})
 	}
 
 	render() {
@@ -119,24 +153,39 @@ class Navbar extends Component {
 		}
 
 		const handleBranch = () => {
+			const languages = document.querySelector('#languages');
+			languages.classList.remove('toggle');
 			const branches = document.querySelector('#branches');
-			branches.classList.toggle('toggle');
+			setTimeout(() => {
+				branches.classList.toggle('toggle');
+			}, 100);
+		}
+		
+		const handleLanguage = () => {
+			const branches = document.querySelector('#branches');
+			branches.classList.remove('toggle');
+			const languages = document.querySelector('#languages');
+			setTimeout(() => {
+				languages.classList.toggle('toggle');
+			}, 100);
 		}
 
 		return (
 			<NavbarStyled>
 				<ul>
 					<Link href="/"><a href="/"><Logo width="160px"/></a></Link>
-					<a href="/"><li>What we do</li></a>
-					<a href="/"><li>About us</li></a>
-					<a href="/"><li>Activities</li></a>
-					<a href="/"><li>Contact</li></a>
-					<a href="/"><li>Support us</li></a>
+					{
+						this.state.menu.map(item => {
+							return (
+								<a href="/" key={item.id}><li>{item.title.rendered}</li></a>
+							)
+						})
+					}
 				</ul>
 				<div className="tools">
 					<div onClick={handleBranch}>Branches &#9207;</div>
-					<div>{this.state.language} &#9207;</div>
-					<ul className="branches" id="branches">
+					<div onClick={handleLanguage}>{this.state.language} &#9207;</div>
+					<ul className="menu" id="branches">
 						{
 							this.state.branches.map(branch => {
 								return (
@@ -144,6 +193,21 @@ class Navbar extends Component {
 										<Link href={`/branches/${branch.slug}`}>
 											<a href={`/branches/${branch.slug}`}>
 												{branch.title.rendered}
+											</a>
+										</Link>
+									</li>
+								)
+							})
+						}
+					</ul>
+					<ul className="menu" id="languages">
+						{
+							this.state.languages.map(language => {
+								return (
+									<li key={language.id}>
+										<Link href={`/branches`}>
+											<a href={`/branches`}>
+												{language.title.rendered}
 											</a>
 										</Link>
 									</li>

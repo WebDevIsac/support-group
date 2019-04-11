@@ -10,8 +10,8 @@ const FormInputStyled = styled.div`
 	font-size: 22px;
 
 	input, textarea {
-		width: 660px;
-		height: 56px;
+		/* width: 100%; */
+		height: 36px;
 		border: 4px solid var(--pink);
 		padding: 10px 25px;
 		font-size: 22px;
@@ -21,6 +21,7 @@ const FormInputStyled = styled.div`
 	textarea {
 		height: 128px;
 		font-family: var(--font-family);
+		resize: none;
 	}
 	
 	label {

@@ -8,6 +8,31 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--font-family);
+	overflow-x: hidden;
+}
+
+h1 {
+	font-size: var(--h1-size);
+	font-weight: var(--h1-weight);
+	letter-spacing: var(--h1-spacing);
+}
+
+h2 {
+	font-size: var(--h2-size);
+	font-weight: var(--h2-weight);
+	letter-spacing: var(--h2-spacing);
+}
+
+h3 {
+	font-size: var(--h3-size);
+	font-weight: var(--h3-weight);
+	letter-spacing: var(--h3-spacing);
+}
+
+p {
+	font-size: var(--p-size);
+	font-weight: var(--p-weight);
+	letter-spacing: var(--p-spacing);
 }
 
 :root {
@@ -19,10 +44,11 @@ body {
 	
 	--h2-size: 40px;
 	--h2-weight: bold;
+	--h2-spacing: -0.5px;
 	
 	--h3-size: 22px;
 	--h3-weight: bold;
-	--h1-spacing: -0.5px;
+	--h3-spacing: 0;
 	
 	--p-size: 16px;
 	--p-weight: 500;

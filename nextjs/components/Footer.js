@@ -16,62 +16,58 @@ const FooterStyled = styled.div`
 
 
 	.menuItems {
-	color: white;
-	width: 20%;
-	height: 200px;
+		color: white;
+		width: 20%;
+		height: 200px;
 	}
 
 
 	.social {
-	height: 60px;
-	width: 100%;
-	display: flex;
-	justify-content: flex-end;
-	flex-direction: column;
-
-
+		height: 60px;
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		flex-direction: column;
 	}
 
 	.socialItems {
-	width: 100%;
-	height: 100%;
-
+		width: 100%;
+		height: 100%;
 	}
 `;
 
 class Footer extends Component {
-state = {
-  posts: [],
+	state = {
+		footer: [],
 
-}
+	}
 
-componentDidMount(){
-  axios.get(`http://localhost:8888/wp-json/wp/v2/footer`)
-  .then(res => {
-      this.setState({ posts: res.data });
+	componentDidMount(){
+		axios.get(`http://localhost/wp-json/wp/v2/footer`)
+		.then(response => {
+			this.setState({ footer: response.data });
 
-  })
-}
+		})
+	}
 
-render() {
-return(
-  <FooterStyled>
-    <div className="footer">
-    {this.state.posts.map(post => {
-      return (
-      <div className="menuItems">
-        <p>{post.acf.description}</p>
-      </div>
-        )
-      })
-      }
-
-      </div>
-      <Banner />
-    </FooterStyled>
-
-    )
-  }
+	render() {
+		return(
+			<FooterStyled>
+			<div className="footer">
+			{
+				this.state.footer.map(item => {
+					return (
+						<div className="menuItems" key={item.id}>
+							<p>{item.acf.description}</p>
+						</div>
+					)
+				})
+			}
+			</div>
+			<Banner />
+			</FooterStyled>
+		)
+	}
 }
 
 export default Footer;
