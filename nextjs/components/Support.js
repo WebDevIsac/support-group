@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import styled from 'styled-components';
 import Arrow from './Arrow';
@@ -8,7 +9,7 @@ const SupportStyled = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: left;
-	height: 600px;
+	height: 300px;
 	padding: 150px 100px;
 
 	h1 {
@@ -30,14 +31,20 @@ const SupportStyled = styled.div`
 		font-weight: bold;
 		padding: 0 5px;
 		color: #fff;
+		cursor: pointer;
+	}
+
+	div:hover {
+		opacity: 0.8;
 	}
 `;
 
-const Support = () => {
+const Support = (props) => {
+	console.log(props);
 	return (
 		<SupportStyled>
-			<h1>Working together for a better future</h1>
-			<div>Support us <Arrow/></div>
+			{/* <h1>{this.state.text}</h1>
+			<div>{this.state.button} <Arrow/></div> */}
 		</SupportStyled>
 	);
 };

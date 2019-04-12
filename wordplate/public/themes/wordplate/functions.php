@@ -46,3 +46,14 @@ add_action('wp_enqueue_scripts', function () {
 add_filter('jpeg_quality', function () {
     return 100;
 }, 10, 2);
+
+
+add_theme_support('plate-disable-menu', [
+    'edit-comments.php', // comments
+    'index.php', // dashboard
+    'upload.php', // media
+    'edit.php?post_type=page', // Custom post type
+    'tools.php?page=wp-migrate-db', // Plugin in Tools
+    'options-general.php?page=menu_editor', // Plugin in Settings
+    'admin.php?page=theseoframework-settings', // Plugin in menu root
+]);

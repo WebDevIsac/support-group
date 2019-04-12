@@ -6,7 +6,7 @@ import Logo from './Logo';
 import styled from 'styled-components';
 
 const NavbarStyled = styled.nav`
-	z-index: 10;
+	z-index: 1;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -33,7 +33,7 @@ const NavbarStyled = styled.nav`
 		padding-inline-start: 0;
 		margin-block-start: 0;
 		margin-block-end: 0;
-		margin-left: 50px;
+		margin-left: 100px;
 		height: 60px;
 	}
 
@@ -51,13 +51,13 @@ const NavbarStyled = styled.nav`
 
 	.tools {
 		height: 60px;
-		padding: 20px 0;
+		padding: 20px 40px;
 		position: relative;
 		display: flex;
 		flex-direction: row;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: flex-end;
-		width: 20%;
+		width: 15%;
 		background: var(--pink);
 		color: white;
 		font-size: var(--h3-size);
@@ -76,8 +76,7 @@ const NavbarStyled = styled.nav`
 		width: 100px;
 		margin: 0;
 		height: initial;
-		margin-top: 90px;
-		margin-left: -20px;
+		margin-top: 100px;
 		padding: 10px 25px;
 		background: #212121;
 		display: flex;
@@ -85,16 +84,18 @@ const NavbarStyled = styled.nav`
 		justify-content: space-between;
 		align-items: flex-start;
 		transition: transform 0.2s ease-in;
-		transform: translateY(-130%);
+		transform: translateY(-150%);
+		z-index: -1;
 	}
 
 	#branches {
 		left: 0;
+		margin-left: 10px;
 	}
 
 	#languages {
 		right: 0;
-		margin-right: 20px;
+		margin-right: 40px;
 	}
 
 	.menu li {

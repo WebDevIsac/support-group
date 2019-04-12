@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
 import Layout from '../components/Layout';
+import Branch from '../components/Branch';
 
 class branch extends Component {
 
@@ -18,10 +19,11 @@ class branch extends Component {
 	}
 
 	render() {
+		console.log(this.props.branch);
 		return (
 			<Fragment>
 				<Layout>
-					<h1>Hello</h1>
+					<Branch branch={this.props.branch}/>
 				</Layout>
 			</Fragment>
 		);

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const MissionCardStyled = styled.div`
+const CardStyled = styled.div`
 	/* background: #53585F; */
 	width: 500px;
 	height: 700px;
@@ -30,19 +30,19 @@ const MissionCardStyled = styled.div`
 	}
 `;
 
-const MissionCard = ({ mission }) => {
-	const textSplit = mission.acf.text.split('<br />');
+const Card = ({ card }) => {
+	const textSplit = card.acf.text.split('<br />');
 	return (
-		<MissionCardStyled>
-			<img src={mission.acf.image} alt="photography"/>
+		<CardStyled>
+			<img src={card.acf.image} alt="photography"/>
 			<div>
-				<h1>{mission.acf.header}</h1>
+				<h1>{card.acf.header}</h1>
 				{textSplit.map((text, index) => {
 					return <p key={index}>{text}</p>
 				})}
 			</div>
-		</MissionCardStyled>
+		</CardStyled>
 	);
 };
 
-export default MissionCard;
+export default Card;
