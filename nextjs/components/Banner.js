@@ -3,20 +3,34 @@ import axios from "axios";
 import styled from 'styled-components';
 
 const BannerStyled = styled.div`
+
+
+@media (max-width: 768px) {
+  .banner {
+	left: 0;
 	bottom: 0;
-	width: 100vw;
-	height: 70px;
+	height: 100px;
+	width: 300vw;
+  }
+}
+
+	.banner {
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
 	flex-direction: row-reverse;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 70px;
 	background-color: #FE5A67;
 
+	}
 
 	.bannerItems {
-	line-height: 2%;
 	color: white;
-	display: flex;
-	height: 50px;
+	/* padding: 20px; */
+
 	}
 
 `;
@@ -43,7 +57,7 @@ return (
       console.log(bann);
       return (
       <div className="bannerItems">
-        <p href="#" dangerouslySetInnerHTML={{__html:bann.content.rendered}}></p>
+        <p>{bann.acf.description}</p>
       </div>
         )
       })

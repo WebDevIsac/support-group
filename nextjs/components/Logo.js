@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Logo = ({ width }) => {
+const Logo = (props) => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420.4 140.46" width={width}>
-			<defs><style>{`.cls-1,.cls-2{fill:#212121;}.cls-2{font-size:30.55px;font-family:Geomanist-Light, Geomanist;font-weight:300;}`}</style></defs>
+		<svg fill={props.color} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420.4 140.46" width={props.width}>
+			<defs><style>{`.cls-2{font-size:30.55px;font-family:Geomanist-Light, Geomanist;font-weight:300;}`}</style></defs>
 			<title>Asset 4</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1">
 			<path className="cls-1" d="M42.84,14.58,30.06,20.43c-1.26-2.79-3.15-6.21-7.92-6.21-3,0-4.95,1.8-4.95,4.23,0,8.55,26.28,7.65,26.28,26.91,0,11.61-8.28,20-22,20A21.89,21.89,0,0,1,0,50.31l12.87-6.39c1.71,3.69,5.13,7,9.45,7,3.69,0,5.58-1.62,5.58-4.41,0-8.37-26.1-7.65-26.1-27.81C1.8,7.38,10,0,22.5,0,36,0,41.22,9.81,42.84,14.58Z"/>
 			<path className="cls-1" d="M51.48,40V1.17H66.87V40C66.87,46.8,71,51,77.85,51s10.8-4.23,10.8-11.16V1.17H104v38.7c0,14.76-9.63,25.38-26.28,25.38C60.84,65.25,51.48,55,51.48,40Z"/>

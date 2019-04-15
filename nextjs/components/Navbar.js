@@ -94,7 +94,7 @@ const NavbarStyled = styled.nav`
 `;
 
 class Navbar extends Component {
-	
+
 	state = {
 		language: "EN",
 		branches: []
@@ -126,7 +126,7 @@ class Navbar extends Component {
 		return (
 			<NavbarStyled>
 				<ul>
-					<Link href="/"><a href="/"><Logo width="160px"/></a></Link>
+					<Link href="/"><a href="/"><Logo color="black" width="160px"/></a></Link>
 					<a href="/"><li>What we do</li></a>
 					<a href="/"><li>About us</li></a>
 					<a href="/"><li>Activities</li></a>
