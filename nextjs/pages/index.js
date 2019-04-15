@@ -7,6 +7,8 @@ import CardContainer from '../components/CardContainer';
 import Box from '../components/Box';
 import Contact from '../components/Contact';
 import Activities from '../components/Activities';
+import Projects from '../components/Projects';
+import Partners from '../components/Partners';
 
 class index extends Component {
 
@@ -32,7 +34,9 @@ class index extends Component {
 				<CardContainer/>
 				<Box/>
 				<Activities/>
+				<Projects/>
 				<Contact/>
+				<Partners/>
 			</Layout>
 		)
 	}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import Projects from './Projects';
 
 // import Section from './Section';
 
@@ -63,7 +64,7 @@ class Activities extends Component {
 					{
 						this.state.activities.map(activity => {
 							return (
-								<div>
+								<div key={activity.id}>
 									<img src={activity.acf.image}></img>
 									<h3>{activity.title.rendered}</h3>
 									<p>{activity.acf.description}</p>

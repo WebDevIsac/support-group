@@ -10,7 +10,7 @@ const FormInputStyled = styled.div`
 	font-size: 22px;
 	width: 75%;
 
-	::before {
+	/* ::before {
 		display: block;
 		position: absolute;
 		left: 0;
@@ -35,7 +35,7 @@ const FormInputStyled = styled.div`
 		background: #000;
 		transition: background 0.2s ease-in;
 
-	}
+	} */
 
 	input, textarea {
 		border: 4px solid var(--background-greyish);
@@ -88,9 +88,9 @@ const FormInputStyled = styled.div`
 		border: 4px solid var(--pink);
 	}
 
-	&.transform div {
+	/* &.transform div {
 		background: var(--pink);
-	}
+	} */
 
 	textarea + label {
 		top: 10%;
