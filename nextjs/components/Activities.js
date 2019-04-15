@@ -1,87 +1,79 @@
 import React, { Component } from 'react';
-import Section from './Section';
+import axios from 'axios';
 import styled from 'styled-components';
 
+// import Section from './Section';
+
 const ActivitiesStyled = styled.div`
+	position: relative;
 	margin: 25px;
-	padding: 15px;
-	display: flex;
-	flex-direction: row-reverse;
-	align-items: center;
-	flex-wrap: wrap-reverse;
+	padding: 160px 0;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(auto, 218px);
+	grid-column-gap: 24px;
+	grid-row-gap: 100px;
 
 	h1 {
-	font-size: 40px;
-	margin: 25px;
-	text-align: left;
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 
-	.activity {
-	width: 25%;
-	/* height: 200px; */
-	flex-direction: column;
-
+	div {
+		position: relative;
 	}
+
+	div::after {
+		content: "";
+		width: 56px;
+		height: 8px;
+		background: var(--pink);
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin-top: 80px;
+	}
+
 	img {
-	width: 100%;
-
+		width: 72px;
+		height: 72px;
 	}
 
 `;
 
 class Activities extends Component {
-state = {
-  posts: [],
-  isFetched: false,
-  image: ''
-}
+	state = {
+		activities: []
+	}
 
-componentDidMount() {
-  fetch('http://localhost:8888/wp-json/wp/v2/activities')
-     .then(response => response.json())
-     .then(json => {
+	componentDidMount() {
+		axios.get('http://localhost/wp-json/wp/v2/activities')
+		.then(response => {
+			this.setState({
+				activities: response.data
+			});
+		});
+	}
 
-          this.setState({
-          posts: json,
-          isFetched: true
-    }, () => {
-      this.state.posts.map(post => {
-        let imgId = post.featured_media;
-        imgId > 0 && fetch(`http://localhost:8888/wp-json/wp/v2/media/${imgId}`)
-        .then(response => response.json())
-        .then(json => {
-            this.setState({
-              image: json.media_details.sizes.full.source_url
-            })
-        })
-      })
-    })
-  });
-}
-
-
-
-render() {
-  return (
-<ActivitiesStyled><h1>Activities</h1>
-<div className="container">
-{this.state.posts.map(post => {
-    console.log(post);
-  return (
-  <div className="activity">
-{post.featured_media > 0 && (<img src={this.state.image}></img>)}
-  <h4>{post.title.rendered}</h4>
-    <p>{post.acf.description}</p>
-  </div>
-  )
-}
-)}
-
-  </div>
-  <Section />
-</ActivitiesStyled>
-    )
-  }
+	render() {
+		return (
+			<ActivitiesStyled>
+				<h1>Activities</h1>
+					{
+						this.state.activities.map(activity => {
+							return (
+								<div>
+									<img src={activity.acf.image}></img>
+									<h3>{activity.title.rendered}</h3>
+									<p>{activity.acf.description}</p>
+								</div>
+							)
+						})
+					}
+			</ActivitiesStyled>
+		)
+	}
 }
 
 export default Activities;

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
 
@@ -113,113 +112,74 @@ const NavbarStyled = styled.nav`
 	}
 `;
 
-class Navbar extends Component {
+const Navbar = ({ navbar, branches, languages }) => {
 	
-	state = {
-		language: "EN",
-		menu: [],
-		branches: [],
-		languages: []
+	const handleBranch = () => {
+		const languages = document.querySelector('#languages');
+		languages.classList.remove('toggle');
+		const branches = document.querySelector('#branches');
+		setTimeout(() => {
+			branches.classList.toggle('toggle');
+		}, 100);
+	}
+	
+	const handleLanguage = () => {
+		const branches = document.querySelector('#branches');
+		branches.classList.remove('toggle');
+		const languages = document.querySelector('#languages');
+		setTimeout(() => {
+			languages.classList.toggle('toggle');
+		}, 100);
 	}
 
-	componentDidMount () {
-		axios.get('http://localhost/wp-json/wp/v2/pages')
-		.then(response => {
-			this.setState({
-				menu: response.data
-			});
-		});
-
-		axios.get('http://localhost/wp-json/wp/v2/branches')
-		.then(response => {
-			this.setState({
-				branches: response.data
-			});
-		});
-
-		axios.get('http://localhost/wp-json/wp/v2/languages?order=asc')
-		.then(response => {
-			this.setState({
-				languages: response.data
-			})
-		})
-	}
-
-	render() {
-
-		const changeLanguage = (e) => {
-			this.setState({
-				language: "SV"
-			});
-		}
-
-		const handleBranch = () => {
-			const languages = document.querySelector('#languages');
-			languages.classList.remove('toggle');
-			const branches = document.querySelector('#branches');
-			setTimeout(() => {
-				branches.classList.toggle('toggle');
-			}, 100);
-		}
-		
-		const handleLanguage = () => {
-			const branches = document.querySelector('#branches');
-			branches.classList.remove('toggle');
-			const languages = document.querySelector('#languages');
-			setTimeout(() => {
-				languages.classList.toggle('toggle');
-			}, 100);
-		}
-
-		return (
-			<NavbarStyled>
-				<ul>
-					<Link href="/"><a href="/"><Logo width="160px"/></a></Link>
+	return (
+		<NavbarStyled>
+			<ul>
+				<Link href="/"><a href="/"><Logo width="160px"/></a></Link>
+				{
+					navbar.acf.items.map((item, index) => {
+						return (
+							<a href="/" key={index}><li>{item.text}</li></a>
+						)
+					})
+				}
+			</ul>
+			<div className="tools">
+				<div onClick={handleBranch}>Branches &#9207;</div>
+				<div onClick={handleLanguage}>EN &#9207;</div>
+				<ul className="menu" id="branches">
 					{
-						this.state.menu.map(item => {
+						branches.acf.items.map((branch, index) => {
 							return (
-								<a href="/" key={item.id}><li>{item.title.rendered}</li></a>
+								<li key={index}>
+									<Link href={`/branches/${branch.text}`}>
+										<a href={`/branches/${branch.text}`}>
+											{branch.text}
+										</a>
+									</Link>
+								</li>
 							)
 						})
 					}
 				</ul>
-				<div className="tools">
-					<div onClick={handleBranch}>Branches &#9207;</div>
-					<div onClick={handleLanguage}>{this.state.language} &#9207;</div>
-					<ul className="menu" id="branches">
-						{
-							this.state.branches.map(branch => {
-								return (
-									<li key={branch.id}>
-										<Link href={`/branches/${branch.slug}`}>
-											<a href={`/branches/${branch.slug}`}>
-												{branch.title.rendered}
-											</a>
-										</Link>
-									</li>
-								)
-							})
-						}
-					</ul>
-					<ul className="menu" id="languages">
-						{
-							this.state.languages.map(language => {
-								return (
-									<li key={language.id}>
-										<Link href={`/branches`}>
-											<a href={`/branches`}>
-												{language.title.rendered}
-											</a>
-										</Link>
-									</li>
-								)
-							})
-						}
-					</ul>
-				</div>
-			</NavbarStyled>
-		);
-	}
+				<ul className="menu" id="languages">
+					{
+						languages.acf.items.map((language, index) => {
+							return (
+								<li key={index}>
+									<Link href={`/branches`}>
+										<a href={`/branches`}>
+											{language.text}
+										</a>
+									</Link>
+								</li>
+							)
+						})
+					}
+				</ul>
+			</div>
+		</NavbarStyled>
+	);
 }
 
 export default Navbar;

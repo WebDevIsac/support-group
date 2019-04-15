@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 import styled from 'styled-components';
@@ -39,14 +39,32 @@ const SupportStyled = styled.div`
 	}
 `;
 
-const Support = (props) => {
-	console.log(props);
-	return (
-		<SupportStyled>
-			{/* <h1>{this.state.text}</h1>
-			<div>{this.state.button} <Arrow/></div> */}
-		</SupportStyled>
-	);
+class Support extends Component {
+
+	state = {
+		content: null
+	}
+
+	componentDidMount() {
+		axios.get('http://localhost/wp-json/wp/v2/contents?slug=first')
+		.then(response => {
+			this.setState({
+				content: response.data[0]
+			})
+		})
+	}
+
+	render() {
+		if (this.state.content) {
+			return (
+				<SupportStyled>
+				<h1>{this.state.content.acf.header}</h1>
+				<div>{this.state.content.acf.text} <Arrow/></div>
+				</SupportStyled>
+			);
+		}
+		return <div/>
+	}
 };
 
 export default Support;

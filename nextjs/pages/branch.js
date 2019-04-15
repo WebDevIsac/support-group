@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Layout from '../components/Layout';
 import Branch from '../components/Branch';
+import Container from '../components/Container';
 
 class branch extends Component {
 
@@ -19,11 +20,12 @@ class branch extends Component {
 	}
 
 	render() {
-		console.log(this.props.branch);
 		return (
 			<Fragment>
 				<Layout>
-					<Branch branch={this.props.branch}/>
+					<Container>
+						<Branch branch={this.props.branch}/>
+					</Container>
 				</Layout>
 			</Fragment>
 		);

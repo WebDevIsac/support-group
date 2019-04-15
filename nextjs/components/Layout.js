@@ -10,22 +10,28 @@ import Container from './Container';
 
 class Layout extends Component {
 	state = {
-		menus: [],
+		navbar: [],
+		branches: [],
+		languages: [],
 		loaded: false
 	}
 
 	componentDidMount() {
 		axios.get('http://localhost/wp-json/wp/v2/menus')
 		.then(responseMenus => {
+			const navbar = responseMenus.data.find(item => item.slug === "navbar");
+			const branches = responseMenus.data.find(item => item.slug === "branches");
+			const languages = responseMenus.data.find(item => item.slug === "language");
 			this.setState({
-				menus: responseMenus,
+				navbar: navbar,
+				branches: branches,
+				languages: languages,
 				loaded: true
 			});
 		});
 	}
 
     render() {
-		const { children } = this.props.children;
 		if (!this.state.loaded) {
 			return <h1 style={{textAlign:'center'}}>Loading...</h1>
 		}
@@ -39,9 +45,9 @@ class Layout extends Component {
 					<meta name="viewport" content="initial-scale=1.0, width=device-width"/>
 					<script async defer crossorigin="anonymous" src="https://connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v3.2"></script>
 				</Head>
-				<Navbar/>
+				<Navbar navbar={this.state.navbar} branches={this.state.branches} languages={this.state.languages}/>
 				<Container>
-					{children}
+					{this.props.children}
 				</Container>
 				<Footer/>
 			</Fragment>

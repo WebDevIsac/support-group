@@ -45,7 +45,7 @@ class Box extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost/wp-json/wp/v2/texts?slug=we-put-smiles-on-peoples-faces')
+		axios.get('http://localhost/wp-json/wp/v2/contents?slug=smiles')
 		.then(response => {
 			this.setState({
 				header: response.data[0].title.rendered,

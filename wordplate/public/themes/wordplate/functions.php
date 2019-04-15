@@ -57,3 +57,54 @@ add_theme_support('plate-disable-menu', [
     'options-general.php?page=menu_editor', // Plugin in Settings
     'admin.php?page=theseoframework-settings', // Plugin in menu root
 ]);
+
+// /**
+//  * Use * for origin
+//  */
+// add_action( 'rest_api_init', function() {
+
+// 	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+// 	add_filter( 'rest_pre_serve_request', function( $value ) {
+// 		header( 'Access-Control-Allow-Origin: *' );
+// 		header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE' );
+// 		header( 'Access-Control-Allow-Credentials: true' );
+
+// 		return $value;
+
+// 	});
+// }, 15 );
+
+// /**
+//  * Only allow GET requests
+//  */
+// add_action( 'rest_api_init', function() {
+
+// 	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+// 	add_filter( 'rest_pre_serve_request', function( $value ) {
+// 		$origin = get_http_origin();
+// 		if ( $origin ) {
+// 			header( 'Access-Control-Allow-Origin: ' . esc_url_raw( $origin ) );
+// 		}
+// 		header( 'Access-Control-Allow-Origin: ' . esc_url_raw( site_url() ) );
+// 		header( 'Access-Control-Allow-Methods: GET' );
+
+// 		return $value;
+
+// 	});
+// }, 15 );
+
+// /**
+//  * Only allow same origin
+//  */
+// add_action( 'rest_api_init', function() {
+
+// 	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+// 	add_filter( 'rest_pre_serve_request', function( $value ) {
+// 		header( 'Access-Control-Allow-Origin: ' . esc_url_raw( site_url() ) );
+// 		header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE' );
+// 		header( 'Access-Control-Allow-Credentials: true' );
+
+// 		return $value;
+
+// 	});
+// }, 15 );

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 
 import Card from './Card';
@@ -22,16 +23,34 @@ const CardContainerStyled = styled.div`
 	} */
 `;
 
-const CardContainer = ({cards}) => {
-	return (
-		<CardContainerStyled>
-			{cards.map(card => {
-				return (
-					<Card card={card} key={card.id}/>
-				)
-			})}
-		</CardContainerStyled>
-	)
+class CardContainer extends Component {
+
+	state = {
+		cards: []
+	}
+
+	componentDidMount() {
+		axios.get(`http://localhost/wp-json/wp/v2/cards`)
+		.then(response => {
+			this.setState({
+				cards: response.data
+			});
+		});
+	}
+
+	render() {
+		return (
+			<CardContainerStyled>
+				{
+					this.state.cards.map(card => {
+					return (
+						<Card card={card} key={card.id}/>
+					)
+					})
+				}
+			</CardContainerStyled>
+		)
+	}
 };
 
 export default CardContainer;
