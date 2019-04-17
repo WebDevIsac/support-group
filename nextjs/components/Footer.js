@@ -1,53 +1,65 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import Banner from './Banner';
-import Social from './Social';
 import Logo from './Logo';
 
 import styled from 'styled-components';
 
 const FooterStyled = styled.div`
 
-	.footer {
+@media (max-width: 768px) {
+  		{
+	left: 0;
+	bottom: 0;
+	height: 800px;
+	width: 100vh;
+
+  }
+}
+
 	background-color: black;
 	display: flex;
 	flex-direction: row-reverse;
 	align-items: center;
+	padding: 130px;
 	bottom: 0;
 	left: 0;
 	height: 500px;
 
-	}
+	position: relative;
 
 	.menuItems {
-	margin-right: 50px;
-	height: 150px;
+	display: flex;
+	height: 200px;
+	justify-content: space-around;
+	align-items: center;
 	flex-direction: column;
 	padding: 40px;
-	align-items: center;
 	color: white;
 	width: 25%;
 
 	}
-
+/*
 	.socialItems {
-	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: space-around;
 
-	}
+
+	} */
 
 	.logo-position {
-	font-size: 100px;
-	height: 500px;
-	flex-direction: row;
+	position: absolute;
+	top: 0;
+	left: 0;
 	margin-top: 100px;
-	margin-left: 50px;
-	align-items: flex-start;
-	display: flex;
+	margin-left: 100px;
 
 	}
 
-	img {
-	background-color: white;
+	.title {
+	color: white;
 }
 
 `;
@@ -61,7 +73,13 @@ state = {
 componentDidMount(){
   axios.get(`http://localhost:8888/wp-json/wp/v2/footer`)
   .then(res => {
-      this.setState({ posts: res.data });
+	console.log(res.data)
+	let filtered = res.data.filter(item => {
+		return item.slug != "banner"
+
+})
+console.log(filtered)
+      this.setState({ posts: filtered });
 
   })
 }
@@ -69,24 +87,30 @@ componentDidMount(){
 render() {
 return(
   <FooterStyled>
-    <div className= "footer">
+  <div className="logo-position">
+  	  <Logo color="white" width="200px"/>
+  </div>
+	<div className="socialItems">
+
+	</div>
     {this.state.posts.map(post => {
+
       return (
       <div className="menuItems">
-		<h4>{post.acf.header}</h4>
-        <p>{post.acf.description}</p>
+		<h4>{post.title.rendered}</h4>
+
+			{
+				post.acf.content.image && post.acf.content.image.map(item => {
+					return <img src={item.image}></img>
+				})
+			}
+
       </div>
 
         )
       })
       }
-	  <div className="logo-position">
-		<div className="logo">
-	  		<Logo color="white" width="200px"/>
-				</div>
-	  		</div>
-		<Social />
-	</div>
+
 	<Banner />
 </FooterStyled>
 

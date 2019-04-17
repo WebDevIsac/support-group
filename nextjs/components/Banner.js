@@ -10,11 +10,12 @@ const BannerStyled = styled.div`
 	left: 0;
 	bottom: 0;
 	height: 100px;
-	width: 300vw;
+
   }
 }
 
 	.banner {
+	position: absolute;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -29,8 +30,6 @@ const BannerStyled = styled.div`
 
 	.bannerItems {
 	color: white;
-	/* padding: 20px; */
-
 	}
 
 `;
@@ -42,9 +41,10 @@ class Banner extends Component {
 }
 
 componentDidMount(){
-  axios.get(`http://localhost:8888/wp-json/wp/v2/banner`)
+  axios.get(`http://localhost:8888/wp-json/wp/v2/footer?slug=banner&order=desc`)
   .then(res => {
-      this.setState({ banner: res.data });
+console.log(res.data[0]);
+      this.setState({ banner: res.data[0].acf.content});
 
   })
 }
@@ -54,10 +54,9 @@ return (
   <BannerStyled>
     <div className="banner">
     {this.state.banner.map(bann => {
-      console.log(bann);
       return (
       <div className="bannerItems">
-        <p>{bann.acf.description}</p>
+        <p>{bann.text}{bann.number && bann.number}</p>
       </div>
         )
       })

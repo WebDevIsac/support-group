@@ -17,13 +17,23 @@ const OrbusStyled = styled.div`
 
 
 .image {
+	display: flex;
+	align-self: center;
 	justify-content: center;
-	height: 100px;
+	height: 80px;
+
 }
 
+.header {
+
+	display: flex;
+	flex-direction: column;
+}
 
 .text {
-	padding: 200px;
+	padding: 50px;
+	width: 750px;
+	align-self: center;
 	display: flex;
 	flex-direction: column;
 }
@@ -54,8 +64,11 @@ class Orbus extends Component {
 	      return (
 	      <div className="logoPosition">
 			<img className="image" src={orbus.acf.image}></img>
+			<h4 className="header">{orbus.acf.header}</h4>
 	        <p className="text">{orbus.acf.description}</p>
+
 	      </div>
+
 
 	        )
 	      })
