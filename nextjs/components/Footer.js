@@ -8,13 +8,20 @@ import styled from 'styled-components';
 const FooterStyled = styled.div`
 
 @media (max-width: 768px) {
-  		{
-	left: 0;
-	bottom: 0;
-	height: 800px;
-	width: 100vh;
+&{height: 800px;
+	width: 100vh;}
 
-  }
+	.logo-position {
+	position: absolute;
+	float: right;
+	top: 0;
+	left: 0;
+	margin-top: 100px;
+	margin-left: 100px;
+	width: 800px;
+
+	}
+
 }
 
 	background-color: black;
@@ -39,15 +46,6 @@ const FooterStyled = styled.div`
 	width: 25%;
 
 	}
-/*
-	.socialItems {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	justify-content: space-around;
-
-
-	} */
 
 	.logo-position {
 	position: absolute;
