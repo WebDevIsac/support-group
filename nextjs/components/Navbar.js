@@ -132,12 +132,14 @@ const Navbar = ({ navbar, branches, languages }) => {
 		}, 100);
 	}
 
+	
+
 	return (
 		<NavbarStyled>
-			<ul>
+			<ul className="navbar">
 				<Link href="/"><a href="/"><Logo width="160px"/></a></Link>
 				{
-					navbar.acf.items.map((item, index) => {
+					navbar.map((item, index) => {
 						return (
 							<a href="/" key={index}><li>{item.text}</li></a>
 						)
@@ -149,7 +151,7 @@ const Navbar = ({ navbar, branches, languages }) => {
 				<div onClick={handleLanguage}>EN &#9207;</div>
 				<ul className="menu" id="branches">
 					{
-						branches.acf.items.map((branch, index) => {
+						branches.map((branch, index) => {
 							return (
 								<li key={index}>
 									<Link href={`/branches/${branch.text}`}>
@@ -164,7 +166,7 @@ const Navbar = ({ navbar, branches, languages }) => {
 				</ul>
 				<ul className="menu" id="languages">
 					{
-						languages.acf.items.map((language, index) => {
+						languages.map((language, index) => {
 							return (
 								<li key={index}>
 									<Link href={`/branches`}>

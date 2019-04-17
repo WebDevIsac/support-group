@@ -6,11 +6,19 @@ import Arrow from './Arrow';
 
 const SupportStyled = styled.div`
 	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: left;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 	height: 300px;
 	padding: 150px 100px;
+
+	section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: left;
+		min-height: 500px;
+	}
 
 	h1 {
 		font-size: 65px;
@@ -37,6 +45,10 @@ const SupportStyled = styled.div`
 	div:hover {
 		opacity: 0.8;
 	}
+
+	img {
+		width: 40%;
+	}
 `;
 
 class Support extends Component {
@@ -58,8 +70,11 @@ class Support extends Component {
 		if (this.state.content) {
 			return (
 				<SupportStyled>
-				<h1>{this.state.content.acf.header}</h1>
-				<div>{this.state.content.acf.text} <Arrow/></div>
+					<section>
+						<h1>{this.state.content.acf.header}</h1>
+						<div>{this.state.content.acf.text} <Arrow/></div>
+					</section>
+					<img src={this.state.content.acf.image}></img>
 				</SupportStyled>
 			);
 		}

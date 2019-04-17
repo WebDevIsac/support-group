@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
+
+import Activities from '../Activities';
+import Contact from '../Contact';
+import InstagramFeed from './InstagramFeed';
 
 const BranchStyled = styled.div`
 	position: relative;
@@ -39,20 +43,25 @@ const BranchStyled = styled.div`
 
 const Branch = ({ branch }) => {
 	return (
-		<BranchStyled>
-			<div>
-				<h1>{branch.title.rendered}</h1>
-			</div>
-			<main>
-				<h2>{branch.acf.text}:</h2>
-				<section className="fb-page" data-href="https://www.facebook.com/SupportRestadGard/" data-tabs="timeline,events" data-width="500" 
-					data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-					<blockquote cite="https://www.facebook.com/SupportRestadGard/" className="fb-xfbml-parse-ignore">
-						<a href="https://www.facebook.com/SupportRestadGard/"></a>
-					</blockquote>
-				</section>
-			</main>
-		</BranchStyled>
+		<Fragment>
+			<BranchStyled>
+				<div>
+					<h1>{branch.title.rendered}</h1>
+				</div>
+				<main>
+					<h2>{branch.acf.text}:</h2>
+					<section className="fb-page" data-href="https://www.facebook.com/SupportRestadGard/" data-tabs="timeline,events" data-width="500" 
+						data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+						<blockquote cite="https://www.facebook.com/SupportRestadGard/" className="fb-xfbml-parse-ignore">
+							<a href="https://www.facebook.com/SupportRestadGard/"></a>
+						</blockquote>
+					</section>
+				</main>
+			</BranchStyled>
+			<Activities activities={branch.acf.activities}/>
+			<Contact/>
+			<InstagramFeed/>
+		</Fragment>
 	);
 };
 

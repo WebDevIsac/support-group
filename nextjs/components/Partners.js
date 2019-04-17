@@ -50,7 +50,7 @@ class Partners extends Component {
 				<h1>Partners</h1>
 				{
 					this.state.partners.map(partner => {
-						return <img src={partner.acf.image}></img>
+						return <img key={partner.id} src={partner.acf.image}></img>
 					})
 				}
 			</PartnersStyled>

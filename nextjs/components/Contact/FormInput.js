@@ -8,55 +8,23 @@ const FormInputStyled = styled.div`
 	align-items: left;
 	position: relative;
 	font-size: 22px;
-	width: 75%;
-
-	/* ::before {
-		display: block;
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		content: "";
-		width: 4px;
-		height: 50%;
-		background: #000;
-		transition: background 0.2s ease-in;
-
-	}
-
-	::after {
-		display: block;
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		content: "";
-		width: 4px;
-		height: 50%;
-		margin-right: -58px;
-		background: #000;
-		transition: background 0.2s ease-in;
-
-	} */
+	width: 100%;
 
 	input, textarea {
-		border: 4px solid var(--background-greyish);
-		width: 100%;
+		border: none;
+		border-bottom: 3px solid #000;
 		height: 36px;
 		padding: 10px 25px;
 		font-size: 22px;
 		outline: 0;
 		transition: border 0.2s ease-in;
+		background: transparent;
 	}
 
-	input {
-		border-bottom: 4px solid #000;
-	}
-
-	
 	textarea {
 		height: 128px;
 		font-family: var(--font-family);
 		resize: none;
-		border: 4px solid #000;
 	}
 	
 	label {
@@ -69,10 +37,6 @@ const FormInputStyled = styled.div`
 		transition: .5s cubic-bezier(.165,.84,.44,1), color .5s cubic-bezier(.165,.84,.44,1), opacity .8s cubic-bezier(.165,.84,.44,1) 0.7s;
 	}
 
-	&.transform::before, &.transform::after {
-		background: var(--pink);
-	}
-
 	&.transform label {
 		top: 0;
 		font-size: var(--p-size);
@@ -80,21 +44,34 @@ const FormInputStyled = styled.div`
 		margin-left: 10px;
 	}
 
-	&.transform input {
-		border-bottom: 4px solid var(--pink);
-	}
-
-	&.transform textarea {
-		border: 4px solid var(--pink);
-	}
-
-	/* &.transform div {
-		background: var(--pink);
-	} */
-
 	textarea + label {
 		top: 10%;
 		transform: translateY(0);
+	}
+
+	.svg-wrapper {
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		pointer-events: none;
+		transform: rotateY(180deg) rotateZ(180deg);
+	}
+
+	rect {
+		position: relative;
+		width: 100%;
+		stroke-dasharray: 2100%;
+		stroke-dashoffset: -2100%;
+		stroke-width: 6px;
+		fill: transparent;
+		stroke: var(--pink);
+		transition: stroke-dasharray 2s;
+	}
+
+	&.transform .svg-wrapper rect {
+		stroke-dasharray: 1700%;
 	}
 `;
 
@@ -104,7 +81,6 @@ class FormInput extends Component {
 		const textarea = document.querySelector('form textarea');
 		const labels = document.querySelectorAll('form label');
 		const labelsArray = Array.from(labels);
-		
 		
 		inputs.forEach(input => {
 			input.addEventListener('focus', (e) => {
@@ -140,6 +116,11 @@ class FormInput extends Component {
 		const {textarea, label, name} = this.props;
 		return (
 			<FormInputStyled>
+				<div class="svg-wrapper">
+					<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+						<rect height="100%" width="100%" />
+					</svg>
+				</div>
 				{textarea ? <textarea name={name}></textarea> : <input name={name}></input>}
 				<label htmlFor={name}>{label}</label>
 			</FormInputStyled>

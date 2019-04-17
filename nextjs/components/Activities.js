@@ -44,6 +44,7 @@ const ActivitiesStyled = styled.div`
 `;
 
 class Activities extends Component {
+
 	state = {
 		activities: []
 	}
@@ -51,13 +52,16 @@ class Activities extends Component {
 	componentDidMount() {
 		axios.get('http://localhost/wp-json/wp/v2/activities')
 		.then(response => {
+			let filtered = response.data.filter(activity => {
+				return this.props.activities.find(id => activity.id === id);
+			});
 			this.setState({
-				activities: response.data
+				activities: filtered
 			});
 		});
 	}
-
 	render() {
+		console.log(this.state.activities);
 		return (
 			<ActivitiesStyled>
 				<h1>Activities</h1>

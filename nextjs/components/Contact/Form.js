@@ -9,7 +9,7 @@ const FormStyled = styled.form`
 	justify-content: space-between;
 	align-items: left;
 	height: 100%;
-	width: 45%;
+	width: 40%;
 	/* padding: 0 100px 0 0; */
 
 	.radio {

@@ -12,15 +12,6 @@ const CardContainerStyled = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-
-	/* ::before {
-		content: "";
-		position: absolute;
-		bottom: 0px;
-		left: -50px;
-		right: -50px;
-		border-bottom: 10px solid #FE5A67;
-	} */
 `;
 
 class CardContainer extends Component {
@@ -40,7 +31,7 @@ class CardContainer extends Component {
 
 	render() {
 		return (
-			<CardContainerStyled>
+			<CardContainerStyled id="1">
 				{
 					this.state.cards.map(card => {
 					return (
