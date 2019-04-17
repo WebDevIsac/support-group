@@ -1,73 +1,96 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import Banner from './Banner';
-import Social from './Social';
+import Logo from './Logo';
 
 import styled from 'styled-components';
 
 const FooterStyled = styled.div`
-	height: 500px;
-	padding: 50px;
+
 	background-color: black;
 	display: flex;
 	flex-direction: row-reverse;
 	align-items: center;
-	flex-wrap: wrap;
+	padding: 130px;
+	bottom: 0;
+	left: 0;
+	height: 500px;
+	position: relative;
 
+	@media  (max-width: 768px) {
+		left: 0;
+		bottom: 0;
+		height: 800px;
+		width: 100vh;
+	}
 
 	.menuItems {
-		color: white;
-		width: 20%;
-		height: 200px;
-	}
-
-
-	.social {
-		height: 60px;
-		width: 100%;
 		display: flex;
-		justify-content: flex-end;
+		height: 200px;
+		justify-content: space-around;
+		align-items: center;
 		flex-direction: column;
+		padding: 40px;
+		color: white;
+		width: 25%;
 	}
 
-	.socialItems {
-		width: 100%;
-		height: 100%;
+	.logo-position {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin-top: 100px;
+		margin-left: 100px;
 	}
+
+
+	.title {
+		color: white;
+	}
+
 `;
 
 class Footer extends Component {
 	state = {
 		footer: [],
-
 	}
 
 	componentDidMount(){
-		axios.get(`http://localhost/wp-json/wp/v2/footer`)
-		.then(response => {
-			this.setState({ footer: response.data });
-
-		})
+		axios.get(`http://localhost:8888/wp-json/wp/v2/footer`)
+		.then(res => {
+			let filtered = res.data.filter(item => {
+				return item.slug != "banner"
+			});
+			this.setState({ posts: filtered });
+		});
 	}
 
 	render() {
 		return(
 			<FooterStyled>
-			<div className="footer">
+			<div className="logo-position">
+				<Logo color="white" width="200px"/>
+			</div>
+			<div className="socialItems">
+			</div>
 			{
-				this.state.footer.map(item => {
+				this.state.posts.map(post => {
 					return (
-						<div className="menuItems" key={item.id}>
-							<p>{item.acf.description}</p>
-						</div>
+					<div className="menuItems">
+						<h4>{post.title.rendered}</h4>
+							{
+								post.acf.content.image && post.acf.content.image.map(item => {
+									return <img src={item.image}></img>
+								})
+							}
+					</div>
 					)
 				})
 			}
-			</div>
+
 			<Banner />
 			</FooterStyled>
 		)
 	}
 }
-
 export default Footer;
