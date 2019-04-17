@@ -35,10 +35,9 @@ const BannerStyled = styled.div`
 `;
 
 class Banner extends Component {
-  state = {
-    banner: [],
-
-}
+  	state = {
+    	banner: [],
+	}
 
 componentDidMount(){
   axios.get(`http://localhost:8888/wp-json/wp/v2/footer?slug=banner&order=desc`)
@@ -46,8 +45,8 @@ componentDidMount(){
 console.log(res.data[0]);
       this.setState({ banner: res.data[0].acf.content});
 
-  })
-}
+		})
+	}
 
 render() {
 return (

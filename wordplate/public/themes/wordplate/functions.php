@@ -46,3 +46,65 @@ add_action('wp_enqueue_scripts', function () {
 add_filter('jpeg_quality', function () {
     return 100;
 }, 10, 2);
+
+
+add_theme_support('plate-disable-menu', [
+    'edit-comments.php', // comments
+    'index.php', // dashboard
+    'upload.php', // media
+    'edit.php?post_type=page', // Custom post type
+    'tools.php?page=wp-migrate-db', // Plugin in Tools
+    'options-general.php?page=menu_editor', // Plugin in Settings
+    'admin.php?page=theseoframework-settings', // Plugin in menu root
+]);
+
+// /**
+//  * Use * for origin
+//  */
+// add_action( 'rest_api_init', function() {
+
+// 	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+// 	add_filter( 'rest_pre_serve_request', function( $value ) {
+// 		header( 'Access-Control-Allow-Origin: *' );
+// 		header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE' );
+// 		header( 'Access-Control-Allow-Credentials: true' );
+
+// 		return $value;
+
+// 	});
+// }, 15 );
+
+// /**
+//  * Only allow GET requests
+//  */
+// add_action( 'rest_api_init', function() {
+
+// 	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+// 	add_filter( 'rest_pre_serve_request', function( $value ) {
+// 		$origin = get_http_origin();
+// 		if ( $origin ) {
+// 			header( 'Access-Control-Allow-Origin: ' . esc_url_raw( $origin ) );
+// 		}
+// 		header( 'Access-Control-Allow-Origin: ' . esc_url_raw( site_url() ) );
+// 		header( 'Access-Control-Allow-Methods: GET' );
+
+// 		return $value;
+
+// 	});
+// }, 15 );
+
+// /**
+//  * Only allow same origin
+//  */
+// add_action( 'rest_api_init', function() {
+
+// 	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+// 	add_filter( 'rest_pre_serve_request', function( $value ) {
+// 		header( 'Access-Control-Allow-Origin: ' . esc_url_raw( site_url() ) );
+// 		header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE' );
+// 		header( 'Access-Control-Allow-Credentials: true' );
+
+// 		return $value;
+
+// 	});
+// }, 15 );

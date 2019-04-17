@@ -1,13 +1,14 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 import Layout from '../components/Layout';
+import Branch from '../components/Branch';
 
-class single extends Component {
+class branch extends Component {
 
 	static async getInitialProps(context) {
 		const slug = context.query.slug;
-
+		
 		// Make request for posts
 		const response = await axios.get(`http://localhost/wp-json/wp/v2/branches?slug=${slug}`);
 
@@ -19,16 +20,11 @@ class single extends Component {
 
 	render() {
 		return (
-			<Fragment>
-				<Layout>
-					<article className="entry-content"
-					dangerouslySetInnerHTML={{
-						__html: this.props.branch.content.rendered
-					}}/>
-				</Layout>
-			</Fragment>
+			<Layout>
+				<Branch branch={this.props.branch}/>
+			</Layout>
 		);
 	}
 }
 
-export default single;
+export default branch;

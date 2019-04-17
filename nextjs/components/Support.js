@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 
 import styled from 'styled-components';
 import Arrow from './Arrow';
 
 const SupportStyled = styled.div`
 	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: left;
-	height: 600px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 300px;
 	padding: 150px 100px;
+
+	section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: left;
+		min-height: 500px;
+	}
 
 	h1 {
 		font-size: 65px;
@@ -30,16 +39,47 @@ const SupportStyled = styled.div`
 		font-weight: bold;
 		padding: 0 5px;
 		color: #fff;
+		cursor: pointer;
+	}
+
+	div:hover {
+		opacity: 0.8;
+	}
+
+	img {
+		width: 40%;
 	}
 `;
 
-const Support = () => {
-	return (
-		<SupportStyled>
-			<h1>Working together for a better future</h1>
-			<div>Support us <Arrow/></div>
-		</SupportStyled>
-	);
+class Support extends Component {
+
+	state = {
+		content: null
+	}
+
+	componentDidMount() {
+		axios.get('http://localhost/wp-json/wp/v2/contents?slug=first')
+		.then(response => {
+			this.setState({
+				content: response.data[0]
+			})
+		})
+	}
+
+	render() {
+		if (this.state.content) {
+			return (
+				<SupportStyled>
+					<section>
+						<h1>{this.state.content.acf.header}</h1>
+						<div>{this.state.content.acf.text} <Arrow/></div>
+					</section>
+					<img src={this.state.content.acf.image}></img>
+				</SupportStyled>
+			);
+		}
+		return <div/>
+	}
 };
 
 export default Support;

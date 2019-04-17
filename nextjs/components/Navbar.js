@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
 
 import styled from 'styled-components';
 
 const NavbarStyled = styled.nav`
-	z-index: 10;
+	z-index: 1;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -28,17 +27,21 @@ const NavbarStyled = styled.nav`
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		align-items: center;
-		width: 75%;
+		align-items: flex-end;
+		width: 65%;
 		padding-inline-start: 0;
-		margin-left: 50px;
+		margin-block-start: 0;
+		margin-block-end: 0;
+		margin-left: 100px;
+		height: 60px;
 	}
 
 	ul a {
 		color: black;
 		text-decoration: none;
 		font-weight: bold;
-		font-size: 20px;
+		font-size: var(--h3-size);
+		font-weight: var(--h3-weight);
 	}
 
 	ul li {
@@ -46,13 +49,18 @@ const NavbarStyled = styled.nav`
 	}
 
 	.tools {
-		height: 100%;
+		height: 60px;
+		padding: 20px 40px;
+		position: relative;
 		display: flex;
 		flex-direction: row;
-		justify-content: space-around;
-		align-items: center;
-		width: 20%;
+		justify-content: space-between;
+		align-items: flex-end;
+		width: 15%;
 		background: var(--pink);
+		color: white;
+		font-size: var(--h3-size);
+		font-weight: var(--h3-weight);
 	}
 
 	.tools div {
@@ -61,30 +69,41 @@ const NavbarStyled = styled.nav`
 	}
 
 
-	.branches {
-		position: fixed;
+	.menu {
+		position: absolute;
 		top: 0;
-		right: 0;
 		width: 100px;
-		margin-top: 80px;
-		margin-right: 5%;
+		margin: 0;
+		height: initial;
+		margin-top: 100px;
 		padding: 10px 25px;
-		background: lightgrey;
+		background: #212121;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		align-items: center;
-		transition: transform 0.5s ease-in;
-		transform: translateY(-130%);
-
+		align-items: flex-start;
+		transition: transform 0.2s ease-in;
+		transform: translateY(-150%);
+		z-index: -1;
 	}
 
-	.branches li {
+	#branches {
+		left: 0;
+		margin-left: 10px;
+	}
+
+	#languages {
+		right: 0;
+		margin-right: 40px;
+	}
+
+	.menu li {
 		margin: 10px 0;
 		cursor: pointer;
 	}
 
-	.branches li a {
+	.menu li a {
+		color: white;
 		font-size: 16px;
 	}
 
@@ -93,68 +112,76 @@ const NavbarStyled = styled.nav`
 	}
 `;
 
-class Navbar extends Component {
-
-	state = {
-		language: "EN",
-		branches: []
-	}
-
-	componentDidMount () {
-		axios.get('http://localhost/wp-json/wp/v2/branches')
-		.then(response => {
-			this.setState({
-				branches: response.data
-			});
-		});
-
-	}
-
-	render() {
-
-		const changeLanguage = (e) => {
-			this.setState({
-				language: "SV"
-			});
-		}
-
-		const handleBranch = () => {
-			const branches = document.querySelector('#branches');
+const Navbar = ({ navbar, branches, languages }) => {
+	
+	const handleBranch = () => {
+		const languages = document.querySelector('#languages');
+		languages.classList.remove('toggle');
+		const branches = document.querySelector('#branches');
+		setTimeout(() => {
 			branches.classList.toggle('toggle');
-		}
-
-		return (
-			<NavbarStyled>
-				<ul>
-					<Link href="/"><a href="/"><Logo color="black" width="160px"/></a></Link>
-					<a href="/"><li>What we do</li></a>
-					<a href="/"><li>About us</li></a>
-					<a href="/"><li>Activities</li></a>
-					<a href="/"><li>Contact</li></a>
-					<a href="/"><li>Support us</li></a>
-				</ul>
-				<div className="tools">
-					<div onClick={handleBranch}>Branches &#9207;</div>
-					<div>{this.state.language} &#9207;</div>
-					<ul className="branches" id="branches">
-						{
-							this.state.branches.map(branch => {
-								return (
-									<li key={branch.id}>
-										<Link href={`/branches/${branch.slug}`}>
-											<a href={`/branches/${branch.slug}`}>
-												{branch.title.rendered}
-											</a>
-										</Link>
-									</li>
-								)
-							})
-						}
-					</ul>
-				</div>
-			</NavbarStyled>
-		);
+		}, 100);
 	}
+	
+	const handleLanguage = () => {
+		const branches = document.querySelector('#branches');
+		branches.classList.remove('toggle');
+		const languages = document.querySelector('#languages');
+		setTimeout(() => {
+			languages.classList.toggle('toggle');
+		}, 100);
+	}
+
+	
+
+	return (
+		<NavbarStyled>
+			<ul className="navbar">
+				<Link href="/"><a href="/"><Logo width="160px"/></a></Link>
+				{
+					navbar.map((item, index) => {
+						return (
+							<a href="/" key={index}><li>{item.text}</li></a>
+						)
+					})
+				}
+			</ul>
+			<div className="tools">
+				<div onClick={handleBranch}>Branches &#9207;</div>
+				<div onClick={handleLanguage}>EN &#9207;</div>
+				<ul className="menu" id="branches">
+					{
+						branches.map((branch, index) => {
+							return (
+								<li key={index}>
+									<Link href={`/branches/${branch.text}`}>
+										<a href={`/branches/${branch.text}`}>
+											{branch.text}
+										</a>
+									</Link>
+								</li>
+							)
+						})
+					}
+				</ul>
+				<ul className="menu" id="languages">
+					{
+						languages.map((language, index) => {
+							return (
+								<li key={index}>
+									<Link href={`/branches`}>
+										<a href={`/branches`}>
+											{language.text}
+										</a>
+									</Link>
+								</li>
+							)
+						})
+					}
+				</ul>
+			</div>
+		</NavbarStyled>
+	);
 }
 
 export default Navbar;

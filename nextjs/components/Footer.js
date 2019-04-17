@@ -32,88 +32,71 @@ const FooterStyled = styled.div`
 	bottom: 0;
 	left: 0;
 	height: 500px;
-
 	position: relative;
 
-	.menuItems {
-	display: flex;
-	height: 200px;
-	justify-content: space-around;
-	align-items: center;
-	flex-direction: column;
-	padding: 40px;
-	color: white;
-	width: 25%;
-
+	@media  (max-width: 768px) {
+		left: 0;
+		bottom: 0;
+		height: 800px;
+		width: 100vh;
 	}
 
 	.logo-position {
-	position: absolute;
-	top: 0;
-	left: 0;
-	margin-top: 100px;
-	margin-left: 100px;
-
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin-top: 100px;
+		margin-left: 100px;
 	}
 
+
 	.title {
-	color: white;
-}
+		color: white;
+	}
 
 `;
 
 class Footer extends Component {
-state = {
-  posts: [],
+	state = {
+		footer: [],
+	}
 
-}
+	componentDidMount(){
+		axios.get(`http://localhost:8888/wp-json/wp/v2/footer`)
+		.then(res => {
+			let filtered = res.data.filter(item => {
+				return item.slug != "banner"
+			});
+			this.setState({ posts: filtered });
+		});
+	}
 
-componentDidMount(){
-  axios.get(`http://localhost:8888/wp-json/wp/v2/footer`)
-  .then(res => {
-	console.log(res.data)
-	let filtered = res.data.filter(item => {
-		return item.slug != "banner"
-
-})
-console.log(filtered)
-      this.setState({ posts: filtered });
-
-  })
-}
-
-render() {
-return(
-  <FooterStyled>
-  <div className="logo-position">
-  	  <Logo color="white" width="200px"/>
-  </div>
-	<div className="socialItems">
-
-	</div>
-    {this.state.posts.map(post => {
-
-      return (
-      <div className="menuItems">
-		<h4>{post.title.rendered}</h4>
-
+	render() {
+		return(
+			<FooterStyled>
+			<div className="logo-position">
+				<Logo color="white" width="200px"/>
+			</div>
+			<div className="socialItems">
+			</div>
 			{
-				post.acf.content.image && post.acf.content.image.map(item => {
-					return <img src={item.image}></img>
+				this.state.posts.map(post => {
+					return (
+					<div className="menuItems">
+						<h4>{post.title.rendered}</h4>
+							{
+								post.acf.content.image && post.acf.content.image.map(item => {
+									return <img src={item.image}></img>
+								})
+							}
+					</div>
+					)
 				})
 			}
 
-      </div>
-
-        )
-      })
-      }
-
-	<Banner />
-</FooterStyled>
-
-    )
-  }
+			<Banner />
+			</FooterStyled>
+		)
+	}
 }
-
 export default Footer;
