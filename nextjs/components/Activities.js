@@ -41,6 +41,11 @@ const ActivitiesStyled = styled.div`
 		height: 72px;
 	}
 
+
+	@media screen and (max-width: 768px) {
+	
+}
+
 `;
 
 class Activities extends Component {
@@ -50,7 +55,7 @@ class Activities extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost/wp-json/wp/v2/activities')
+		axios.get('http://localhost:8888/wp-json/wp/v2/activities')
 		.then(response => {
 			let filtered = response.data.filter(activity => {
 				return this.props.activities.find(id => activity.id === id);

@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CardStyled = styled.div`
-	/* background: #53585F; */
 	width: 500px;
 	height: 700px;
 	color: #000;
@@ -28,6 +27,7 @@ const CardStyled = styled.div`
 		font-size: 16px;
 		margin: 16px 0;
 	}
+
 `;
 
 const Card = ({ card }) => {

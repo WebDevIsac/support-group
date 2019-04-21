@@ -113,7 +113,7 @@ const NavbarStyled = styled.nav`
 `;
 
 const Navbar = ({ navbar, branches, languages }) => {
-	
+
 	const handleBranch = () => {
 		const languages = document.querySelector('#languages');
 		languages.classList.remove('toggle');
@@ -122,7 +122,7 @@ const Navbar = ({ navbar, branches, languages }) => {
 			branches.classList.toggle('toggle');
 		}, 100);
 	}
-	
+
 	const handleLanguage = () => {
 		const branches = document.querySelector('#branches');
 		branches.classList.remove('toggle');
@@ -132,12 +132,12 @@ const Navbar = ({ navbar, branches, languages }) => {
 		}, 100);
 	}
 
-	
+
 
 	return (
 		<NavbarStyled>
 			<ul className="navbar">
-				<Link href="/"><a href="/"><Logo width="160px"/></a></Link>
+				<Link href="/"><a href="/"><Logo width="120px" color="black"/></a></Link>
 				{
 					navbar.map((item, index) => {
 						return (

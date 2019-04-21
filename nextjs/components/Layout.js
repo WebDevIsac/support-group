@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Container from './Container';
 import Loading from './Loading';
+// require('dotenv').config();
 
 class Layout extends Component {
 	state = {
@@ -18,7 +19,7 @@ class Layout extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost/wp-json/wp/v2/menus')
+		axios.get('http://localhost:8888/wp-json/wp/v2/menus')
 		.then(responseMenus => {
 			const navbar = responseMenus.data.find(item => item.slug === "navbar");
 			const branches = responseMenus.data.find(item => item.slug === "branches");
@@ -54,7 +55,7 @@ class Layout extends Component {
 				<Container>
 					{this.props.children}
 				</Container>
-				<Footer/>
+				<Footer />
 			</Fragment>
 		);
     }

@@ -38,16 +38,17 @@ const ProjectsStyled = styled.div`
 		max-height: 100%;
 		max-width: 70%;
 	}
+
 `;
 
 class Projects extends Component {
 
 	state = {
-		projects: []	
+		projects: []
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost/wp-json/wp/v2/projects')
+		axios.get('http://localhost:8888/wp-json/wp/v2/projects')
 		.then(response => {
 			this.setState({
 				projects: response.data

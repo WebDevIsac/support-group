@@ -19,6 +19,16 @@ const ContactContainerStyled = styled.div`
 		left: 0;
 		margin-top: 70px;
 	}
+
+	@media only screen and (max-width: 768px) {
+		flex-direction: column;
+		height: 90%;
+		padding: 150px 24px 100px 24px;
+
+		h2 {
+			margin-left: 24px;
+		}
+	}
 `;
 
 const ContactContainer = () => {

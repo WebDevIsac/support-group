@@ -34,6 +34,7 @@ const BoxStyled = styled.div`
 	img {
 		width: 100%;
 	}
+
 `;
 
 class Box extends Component {
@@ -45,7 +46,7 @@ class Box extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost/wp-json/wp/v2/contents?slug=smiles')
+		axios.get('http://localhost:8888/wp-json/wp/v2/contents?slug=smiles')
 		.then(response => {
 			this.setState({
 				header: response.data[0].title.rendered,
@@ -54,7 +55,7 @@ class Box extends Component {
 			})
 		});
 	}
-	
+
 	render() {
 		return (
 			<BoxStyled>

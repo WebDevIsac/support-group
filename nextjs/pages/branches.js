@@ -16,7 +16,6 @@ class branches extends Component {
 		}
 	}
 	render() {
-		console.log(this.props.branches);
 		return (
 			<Layout>
 				<h1>This is our branches</h1>

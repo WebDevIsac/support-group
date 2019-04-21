@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .next
+.env
 
 # testing
 /coverage
@@ -24,3 +25,5 @@ yarn-debug.log*
 yarn-error.log*
 
 .babelrc
+
+.env

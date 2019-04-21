@@ -10,22 +10,20 @@ const FormStyled = styled.form`
 	align-items: left;
 	height: 100%;
 	width: 40%;
-	/* padding: 0 100px 0 0; */
 
 	.radio {
 		position: relative;
 		display: inline-block;
 		flex-direction: row;
-		/* justify-content: flex-start; */
 		align-items: center;
 		cursor: pointer;
 		padding: 10px;
 	}
 	
 	.radio label {
+		display: block;
 		cursor: pointer;
 		margin-left: 35px;
-		width: 0;
 	}
 
 	.radio input {
@@ -47,6 +45,14 @@ const FormStyled = styled.form`
 	.radio span.checked {
 		background: var(--pink);
 		border-color: var(--pink);
+	}
+
+	@media only screen and (max-width: 768px) {
+		width: 90%;
+
+		.radio {
+			margin: 12px 0;
+		}
 	}
 `;
 

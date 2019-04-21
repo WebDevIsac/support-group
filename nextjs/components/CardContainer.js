@@ -12,6 +12,8 @@ const CardContainerStyled = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+
+
 `;
 
 class CardContainer extends Component {
@@ -21,7 +23,7 @@ class CardContainer extends Component {
 	}
 
 	componentDidMount() {
-		axios.get(`http://localhost/wp-json/wp/v2/cards`)
+		axios.get(`http://localhost:8888/wp-json/wp/v2/cards`)
 		.then(response => {
 			this.setState({
 				cards: response.data
@@ -35,7 +37,7 @@ class CardContainer extends Component {
 				{
 					this.state.cards.map(card => {
 					return (
-						<Card card={card} key={card.id}/>
+						<Card className="card" card={card} key={card.id}/>
 					)
 					})
 				}
