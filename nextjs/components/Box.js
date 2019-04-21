@@ -34,6 +34,31 @@ const BoxStyled = styled.div`
 	img {
 		width: 100%;
 	}
+
+	@media only screen and (max-width: 768px) {
+		flex-direction: column-reverse;
+		margin: 0;
+		height: 100%;
+		width: 100vw;
+		padding: 50px 0;
+
+		section {
+			width: 90%;
+			padding: 0;
+			padding-left: 24px;
+			padding-right: 24px;
+		}
+
+		aside {
+			width: 100%;
+			padding: 0;
+		}
+
+		img {
+			width: 100%;
+		}
+
+	}
 `;
 
 class Box extends Component {

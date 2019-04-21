@@ -29,13 +29,12 @@ class index extends Component {
 	}
 
 	render() {
-		console.log(this.state.activities);
 		return (
 			<Layout page="start">
 				<Support/>
 				<CardContainer/>
 				<Box/>
-				<Activities activities={this.state.activities}/>
+				{/* <Activities activities={this.state.activities}/> */}
 				<Projects/>
 				<Contact/>
 				<Partners/>

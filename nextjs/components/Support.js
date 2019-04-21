@@ -9,7 +9,6 @@ const SupportStyled = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	height: 300px;
 	padding: 150px 100px;
 
 	section {
@@ -48,6 +47,26 @@ const SupportStyled = styled.div`
 
 	img {
 		width: 40%;
+	}
+
+	@media only screen and (max-width: 768px) {
+		flex-direction: column;
+		padding: 0 16px 100px 16px;
+		height: 60vh;
+
+		section {
+			min-height: 200px;
+		}
+
+		h1 {
+			font-size: var(--h2-size);
+			font-weight: var(--h2-weight);
+			width: 100%;
+		}
+
+		img {
+			width: 80%;
+		}
 	}
 `;
 

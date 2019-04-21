@@ -6,12 +6,18 @@ import Card from './Card';
 
 const CardContainerStyled = styled.div`
 	z-index: 0;
-	height: 100vh;
+	height: 100%;
 	position: relative;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	padding-bottom: 100px;
+
+	@media only screen and (max-width: 768px) {
+		flex-direction: column;
+		height: 100%;
+	}
 `;
 
 class CardContainer extends Component {

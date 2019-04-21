@@ -28,6 +28,10 @@ const InformationStyled = styled.div`
 		width: 25px;
 		margin-right: 30px;
 	}
+
+	@media only screen and (max-width: 768px) {
+		width: 90%;
+	}
 `;
 
 const Information = () => {

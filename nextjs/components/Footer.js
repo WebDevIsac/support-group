@@ -7,23 +7,6 @@ import styled from 'styled-components';
 
 const FooterStyled = styled.div`
 
-@media (max-width: 768px) {
-&{height: 800px;
-	width: 100vh;}
-
-	.logo-position {
-	position: absolute;
-	float: right;
-	top: 0;
-	left: 0;
-	margin-top: 100px;
-	margin-left: 100px;
-	width: 800px;
-
-	}
-
-}
-
 	background-color: black;
 	display: flex;
 	flex-direction: row-reverse;
@@ -33,12 +16,19 @@ const FooterStyled = styled.div`
 	left: 0;
 	height: 500px;
 	position: relative;
+	color: white;
 
-	@media  (max-width: 768px) {
-		left: 0;
-		bottom: 0;
-		height: 800px;
-		width: 100vh;
+	@media (max-width: 768px) {
+		& {
+			height: 800px;
+			width: 100vh;
+		}
+
+		.logo-position {
+			float: right;
+			width: 800px;
+
+		}
 	}
 
 	.logo-position {
@@ -62,12 +52,13 @@ class Footer extends Component {
 	}
 
 	componentDidMount(){
-		axios.get(`http://localhost:8888/wp-json/wp/v2/footer`)
+		const api = process.env.WP_KEY;
+		axios.get(`http://localhost/wp-json/wp/v2/footer`)
 		.then(res => {
 			let filtered = res.data.filter(item => {
 				return item.slug != "banner"
 			});
-			this.setState({ posts: filtered });
+			this.setState({ footer: filtered });
 		});
 	}
 
@@ -80,12 +71,13 @@ class Footer extends Component {
 			<div className="socialItems">
 			</div>
 			{
-				this.state.posts.map(post => {
+				this.state.footer.map(item => {
+					console.log(item);
 					return (
 					<div className="menuItems">
-						<h4>{post.title.rendered}</h4>
+						<h4>{item.title.rendered}</h4>
 							{
-								post.acf.content.image && post.acf.content.image.map(item => {
+								item.acf.content.image && item.acf.content.image.map(item => {
 									return <img src={item.image}></img>
 								})
 							}

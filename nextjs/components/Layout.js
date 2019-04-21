@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Container from './Container';
 import Loading from './Loading';
+// require('dotenv').config();
 
 class Layout extends Component {
 	state = {
@@ -54,7 +55,7 @@ class Layout extends Component {
 				<Container>
 					{this.props.children}
 				</Container>
-				<Footer/>
+				{/* <Footer/> */}
 			</Fragment>
 		);
     }

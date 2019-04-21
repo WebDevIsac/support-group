@@ -35,8 +35,31 @@ const ProjectsStyled = styled.div`
 	}
 
 	img {
-		max-height: 100%;
-		max-width: 70%;
+		max-height: 90%;
+		max-width: 60%;
+	}
+
+	div:last-child img {
+		max-width: 80%;
+	}
+
+
+	@media only screen and (max-width: 768px) {
+		flex-wrap: nowrap;
+		flex-direction: column;
+		padding: 150px 0 50px 0;
+		margin-left: 0;
+
+		h1 {
+			margin: 0;
+			margin-left: 24px;
+			margin-top: 60px;
+		}
+
+		div {
+			width: 90%;
+			margin: 12px 0;
+		}
 	}
 `;
 

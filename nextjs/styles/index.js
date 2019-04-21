@@ -9,6 +9,7 @@ body {
     padding: 0;
     font-family: var(--font-family);
 	overflow-x: hidden;
+	max-width: 100%;
 }
 
 h1 {

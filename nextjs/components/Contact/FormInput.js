@@ -17,7 +17,7 @@ const FormInputStyled = styled.div`
 		padding: 10px 25px;
 		font-size: 22px;
 		outline: 0;
-		transition: border 0.2s ease-in;
+		transition: border 0.5s ease-in;
 		background: transparent;
 	}
 
@@ -35,6 +35,10 @@ const FormInputStyled = styled.div`
 		transform: translateY(-50%);
 		pointer-events: none;
 		transition: .5s cubic-bezier(.165,.84,.44,1), color .5s cubic-bezier(.165,.84,.44,1), opacity .8s cubic-bezier(.165,.84,.44,1) 0.7s;
+	}
+
+	&.transform input, &.transform textarea {
+		border-color: transparent;
 	}
 
 	&.transform label {
@@ -72,6 +76,10 @@ const FormInputStyled = styled.div`
 
 	&.transform .svg-wrapper rect {
 		stroke-dasharray: 1700%;
+	}
+	
+	@media only screen and (max-width: 768px) {
+		margin: 24px 0;
 	}
 `;
 
