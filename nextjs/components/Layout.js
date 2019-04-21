@@ -55,7 +55,7 @@ class Layout extends Component {
 				<Container>
 					{this.props.children}
 				</Container>
-				<Footer />
+				<Footer/> 
 			</Fragment>
 		);
     }

@@ -28,6 +28,11 @@ const CardStyled = styled.div`
 		margin: 16px 0;
 	}
 
+	@media only screen and (max-width: 768px) {
+		width: 100vw;
+		height: 100%;
+		margin: 12px 0;
+	}
 `;
 
 const Card = ({ card }) => {

@@ -5,11 +5,11 @@ import Logo from './Logo';
 import styled from 'styled-components';
 
 const NavbarStyled = styled.nav`
-	z-index: 1;
+	z-index: 5;
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: 100vw;
 	height: 100px;
 	background: #f4f4f4;
 	display: flex;
@@ -17,6 +17,13 @@ const NavbarStyled = styled.nav`
 	align-items: center;
 	justify-content: space-between;
 	box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
+
+	.logo {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin: 24px 0px 24px 100px;
+	}
 
 	img {
 		width: 10px;
@@ -32,7 +39,8 @@ const NavbarStyled = styled.nav`
 		padding-inline-start: 0;
 		margin-block-start: 0;
 		margin-block-end: 0;
-		margin-left: 100px;
+		margin-left: 320px;
+		margin-right: 150px;
 		height: 60px;
 	}
 
@@ -110,6 +118,47 @@ const NavbarStyled = styled.nav`
 	.tools > .toggle {
 		transform: translateY(0%);
 	}
+
+	@media only screen and (max-width: 768px) {
+		height: 80px;
+		justify-content: flex-end;
+		align-items: center;
+
+		.logo {
+			margin-left: 10px;
+		}
+
+		ul {
+			display: none;
+		}
+
+		.tools {
+			background: none;
+			align-items: center;
+			padding: 0;
+			height: 100%;
+		}
+
+		.tools div:nth-child(1) {
+			display: none;
+		}
+
+		.tools div {
+			color: black;
+			font-size: var(--p-size);
+			font-weight: var(--p-weight);
+		}
+
+		.menu {
+			margin-top: 80px;
+			width: 80px;
+		}
+
+		#languages {
+			margin-right: 0;
+		}
+
+	}
 `;
 
 const Navbar = ({ navbar, branches, languages }) => {
@@ -136,8 +185,10 @@ const Navbar = ({ navbar, branches, languages }) => {
 
 	return (
 		<NavbarStyled>
+			<div class="logo">
+				<Link href="/"><a href="/"><Logo width="160px"/></a></Link>
+			</div>
 			<ul className="navbar">
-				<Link href="/"><a href="/"><Logo width="120px" color="black"/></a></Link>
 				{
 					navbar.map((item, index) => {
 						return (

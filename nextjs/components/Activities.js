@@ -41,11 +41,11 @@ const ActivitiesStyled = styled.div`
 		height: 72px;
 	}
 
-
-	@media screen and (max-width: 768px) {
-	
-}
-
+	@media only screen and (max-width: 768px) {
+		width: 100%;
+		padding: 0;
+		overflow-x: hidden;
+	}
 `;
 
 class Activities extends Component {
@@ -66,7 +66,6 @@ class Activities extends Component {
 		});
 	}
 	render() {
-		console.log(this.state.activities);
 		return (
 			<ActivitiesStyled>
 				<h1>Activities</h1>

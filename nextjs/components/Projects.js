@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 const ProjectsStyled = styled.div`
@@ -35,14 +36,36 @@ const ProjectsStyled = styled.div`
 	}
 
 	img {
-		max-height: 100%;
-		max-width: 70%;
+		max-height: 90%;
+		max-width: 60%;
+	}
+
+	div:last-child img {
+		max-width: 80%;
+	}
+
+
+	@media only screen and (max-width: 768px) {
+		flex-wrap: nowrap;
+		flex-direction: column;
+		padding: 150px 0 50px 0;
+		margin-left: 0;
+
+		h1 {
+			margin: 0;
+			margin-left: 24px;
+			margin-top: 60px;
+		}
+
+		div {
+			width: 90%;
+			margin: 12px 0;
+		}
 	}
 
 `;
 
 class Projects extends Component {
-
 	state = {
 		projects: []
 	}
@@ -55,15 +78,13 @@ class Projects extends Component {
 			});
 		});
 	}
-
-
 	render() {
 		return (
 			<ProjectsStyled>
 				<h1>Projects</h1>
 				{
 					this.state.projects.map(project => {
-						return <div key={project.id}><img src={project.acf.image}></img></div>
+						return <Link href={`/projects/${project.slug}`}><div key={project.id}><img src={project.acf.image}></img></div></Link>
 					})
 				}
 			</ProjectsStyled>

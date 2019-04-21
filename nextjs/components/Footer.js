@@ -103,34 +103,33 @@ flex-wrap: wrap;
 
 		}
 
-		componentDidMount(){
-			axios.get(`http://localhost:8888/wp-json/wp/v2/footer`)
-			.then(res => {
-				let filtered = res.data.filter(item => {
-					return item.slug != "banner"
-				});
-				this.setState({ footer: filtered });
+	componentDidMount(){
+		const api = process.env.WP_KEY;
+		axios.get(`http://localhost/wp-json/wp/v2/footer`)
+		.then(res => {
+			let filtered = res.data.filter(item => {
+				return item.slug != "banner"
 			});
-		}
+			this.setState({ footer: filtered });
+		});
+	}
 
 		render() {
 			return(
 				<FooterStyled>
 				<div className="logo-position">
 				<Logo color="white" width="200px"/>
-
-				</div>
-
-				<div className="menuItemsPosition">
-				{
-					this.state.footer.map(post => {
-						console.log(post);
-						return (
-							<div className="menuItem">
-							<h4>{post.title.rendered}</h4>
-							<li>{post.acf.content[0].text}</li>
+			</div>
+			<div className="socialItems">
+			</div>
+			{
+				this.state.footer.map(item => {
+					console.log(item);
+					return (
+					<div className="menuItems">
+						<h4>{item.title.rendered}</h4>
 							{
-								post.acf.content.image && post.acf.content.image.map(item => {
+								item.acf.content.image && item.acf.content.image.map(item => {
 									return <img src={item.image}></img>
 								})
 							}
@@ -138,7 +137,7 @@ flex-wrap: wrap;
 						)
 					})
 				}
-				</div>
+
 				<Banner />
 				</FooterStyled>
 			)
