@@ -22,9 +22,12 @@ const ContainerStyled = styled.div`
 	flex-direction: column;
 	}
 
+	.content {
+	margin-bottom: 80px;
+}
+
 	.text-placement {
-	margin-top: 50px;
-	padding: 30px;
+	padding: 100px;
 	}
 
 	img {
@@ -56,8 +59,13 @@ const ContainerStyled = styled.div`
 
 		.text-placement {
 		margin-top: 20px;
-		padding: 30px;
+		padding: 20px;
 	}
+
+		.content {
+		margin-bottom: 80px;
+		letter-spacing: .5px;
+}
 
 }
 `;

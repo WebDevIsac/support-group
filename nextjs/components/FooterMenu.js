@@ -64,6 +64,7 @@ flex-wrap: wrap-reverse;
 	width: 100%;
 	height: 100vh;
 	transform: translateY(700px);
+	transition: 0.4s;
 	color: white;
 	bottom: 0;
 	background-color: black;
@@ -71,6 +72,7 @@ flex-wrap: wrap-reverse;
 
 .showMenu {
 transform: translateY(0);
+transition: 0.4s;
 }
 
 .footer-menu li {
@@ -81,13 +83,13 @@ transform: translateY(0);
 }
 
 .footer-menu li a {
-	font-size: 35px;
+	font-size: 40px;
 	text-decoration: none;
 	color: white;
 }
 
 .footer-image {
-	margin-top: 50px;
+	width: 50px;
 }
 
 
@@ -104,15 +106,61 @@ font-size: 20px;
 
 
 .button {
+display: flex;
+align-items: center;
+justify-content: center;
 z-index: 1;
-margin-left: 280px;
-margin-top: 20px;
+bottom: 0;
+right: 0;
+margin-right: 16px;
+margin-bottom: 16px;
 position: fixed;
 width: 70px;
 height: 70px;
 border-radius: 50%;
+box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
 background-color: var(--pink);
 
+}
+
+.bar-one {
+text-align: center;
+transform: rotate(45deg);
+position: absolute;
+width: 35px;
+height: 4px;
+background-color: #fff;
+
+}
+
+.bar-two {
+text-align: center;
+transform: rotate(-45deg);
+position: absolute;
+width: 35px;
+height: 4px;
+background-color: #fff;
+
+}
+
+.logo-placement {
+
+margin-top: 20px;
+margin-left: 20px;
+}
+
+.banner-tags {
+font-size: 24px !important;
+}
+
+.arrow-down {
+	margin-left: 110px;
+	position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 9px solid #fff;
 }
 
 }
@@ -144,20 +192,27 @@ background-color: var(--pink);
 				<FooterMenuStyled>
 
 			<nav className="footer-menu" id="footer-menu">
+				<div className="logo-placement">
 				<Logo className="footer-image" color="white" width="200px"/>
-				<ul>
-					<li><a href="#">What we do</a></li>
-					<li><a href="#">About us</a></li>
-					<li><a href="#">Activities</a></li>
-					<li><a href="#">Contact</a></li>
-					<li><a href="#">Support us</a></li>
-				</ul>
+				</div>
+					<ul>
+						<li><a href="#">What we do</a></li>
+						<li><a href="#">About us</a></li>
+						<li><a href="#">Activities</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">Support us</a></li>
+						</ul>
 					<div className="menu-banner">
-						<li className="menu-banner-li"><a href="#">Branches</a></li>
-						<li className="menu-banner-li"><a href="#">EN</a></li>
+						<li className="menu-banner-li"><a className="banner-tags" href="#">Branches</a>
+							<div class="arrow-down"></div>
+							</li>
+							<li className="menu-banner-li"><a className="banner-tags" href="#">EN</a>
+							<div class="arrow-down"></div>
+						</li>
+
 						<button id="menu-button" className="button">
-							<div className="bar"></div>
-							<div className="bar"></div>
+							<div className="bar-one"></div>
+							<div className="bar-two"></div>
 						</button>
 					</div>
 				</nav>

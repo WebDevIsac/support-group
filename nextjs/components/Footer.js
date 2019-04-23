@@ -22,6 +22,16 @@ width: 100vw;
 position: relative;
 
 
+.images {
+flex-direction: column;
+margin-right: 60px;
+height: 200px;
+display: flex;
+justify-content: space-evenly
+
+}
+
+
 .logo-position {
 position:static;
 display: flex;
@@ -48,7 +58,7 @@ height: 400px;
 margin-left: 250px;
 flex-direction: column;
 display: flex;
-flex-direction: row-reverse;
+flex-direction: row;
 justify-content: center;
 }
 
@@ -56,10 +66,12 @@ justify-content: center;
 @media screen and (max-width: 768px) {
 
 .menuItem {
-padding:5px;
-height: 50px;
-margin:20px 0;
-width:33%;
+display: flex;
+flex-direction: column;
+padding:0;
+height: 80px;
+margin-bottom: 110px;
+width:27%;
 margin-top: 0;
 }
 
@@ -77,10 +89,9 @@ display: flex;
 flex-direction:column;
 justify-content: flex-start;
 left: 0;
-height: 1050px;
+height: 1000px;
 bottom: 0;
 width: 100vw;
-/* padding: 200px; */
 background-attachment: fixed;
 background-position: center;
 background-repeat: no-repeat;
@@ -88,9 +99,11 @@ background-size: cover;
 overflow-x: hidden;
 
 .menuItemsPosition {
+height: 300px;
 display: flex;
 padding: 25px;
-justify-content: flex-end;
+align-items: center;
+justify-content: space-between;
 margin: 0;
 flex-wrap: wrap;
 }
@@ -138,6 +151,16 @@ background-color: var(--pink);
 
 }
 
+.images {
+flex-direction: column;
+height: 180px;
+display: flex;
+justify-content: space-evenly;
+margin-left: 280px;
+margin-bottom: 50px;
+}
+
+
 }
 `;
 
@@ -160,7 +183,8 @@ background-color: var(--pink);
 					console.log(images);
 			this.setState({
 			footer: filtered,
-			social: images.acf.content
+			social: images.acf.content,
+
 
  			});
 
@@ -187,9 +211,14 @@ background-color: var(--pink);
 						)
 					})
 				}
-				{this.state.social.map(image => {
+
+				<div className="images">
+				{
+					this.state.social.map(image => {
 					return <img src={image.image}></img>
+
 				})}
+				</div>
 			</div>
 
 				<Banner />
