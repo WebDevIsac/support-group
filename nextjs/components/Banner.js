@@ -76,12 +76,7 @@ li {
 margin-top: 10px;
 }
 
-	/* .bannerItems {
-	list-style: none;
-	display: flex;
-	justify-content: center;
-	width:33%;
-	} */
+
 }
 
 

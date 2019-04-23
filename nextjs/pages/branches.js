@@ -8,7 +8,7 @@ class branches extends Component {
 	static async getInitialProps() {
 
 		// Make request for posts
-		const response = await axios.get(`http://localhost/wp-json/wp/v2/branches`);
+		const response = await axios.get(`http://localhost:8888/wp-json/wp/v2/branches`);
 
 		// Return our only item in array from response to posts object in props
 		return {

@@ -124,6 +124,16 @@ const NavbarStyled = styled.nav`
 		justify-content: flex-end;
 		align-items: center;
 
+
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100px;
+		background: #E7EEED;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
 		.logo {
 			margin-left: 10px;
 		}

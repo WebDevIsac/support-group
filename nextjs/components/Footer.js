@@ -45,21 +45,22 @@ color: white;
 .menuItemsPosition {
 /* flex-wrap:wrap; */
 height: 400px;
-margin-left: 300px;
+margin-left: 250px;
 flex-direction: column;
 display: flex;
 flex-direction: row-reverse;
 justify-content: center;
 }
 
+
 @media screen and (max-width: 768px) {
 
 .menuItem {
-padding:0;
-height: 0;
+padding:5px;
+height: 50px;
 margin:20px 0;
 width:33%;
-margin-top: 40px;
+margin-top: 0;
 }
 
 .logo-position {
@@ -89,28 +90,80 @@ overflow-x: hidden;
 .menuItemsPosition {
 display: flex;
 padding: 25px;
-justify-content: space-between;
+justify-content: flex-end;
 margin: 0;
 flex-wrap: wrap;
 }
 
 
+.footer-menu li {
+	list-style: none;
+	margin-top: 30px;
+	margin-left: 20px;
+
+}
+
+.footer-menu li a {
+	font-size: 35px;
+	text-decoration: none;
+	color: white;
+}
+
+.footer-image {
+	margin-top: 50px;
+}
+
+
+.menu-banner {
+margin-top: 20px;
+width: 100%;
+height: 280px;
+background-color: var(--pink);
+}
+
+.menu-banner a {
+font-size: 20px;
+}
+
+
+.button {
+z-index: 1;
+margin-left: 280px;
+margin-top: 20px;
+position: fixed;
+width: 70px;
+height: 70px;
+border-radius: 50%;
+background-color: var(--pink);
+
+}
+
+}
 `;
 
 	class Footer extends Component {
 		state = {
 			footer: [],
+			social: []
 
 		}
 
+
 	componentDidMount(){
 		const api = process.env.WP_KEY;
-		axios.get(`http://localhost/wp-json/wp/v2/footer`)
+		axios.get(`http://localhost:8888/wp-json/wp/v2/footer?order=asc`)
 		.then(res => {
 			let filtered = res.data.filter(item => {
 				return item.slug != "banner"
 			});
-			this.setState({ footer: filtered });
+				let images = res.data.find(item => item.slug == 'social')
+					console.log(images);
+			this.setState({
+			footer: filtered,
+			social: images.acf.content
+
+ 			});
+
 		});
 	}
 
@@ -118,28 +171,29 @@ flex-wrap: wrap;
 			return(
 				<FooterStyled>
 				<div className="logo-position">
-				<Logo color="white" width="200px"/>
+				<Logo className="logo-image" color="white" width="200px"/>
 			</div>
-			<div className="socialItems">
-			</div>
+			<div className="menuItemsPosition">
 			{
 				this.state.footer.map(item => {
 					console.log(item);
 					return (
-					<div className="menuItems">
+
+					<div className="menuItem">
 						<h4>{item.title.rendered}</h4>
-							{
-								item.acf.content.image && item.acf.content.image.map(item => {
-									return <img src={item.image}></img>
-								})
-							}
+
+							<li>{item.acf.content[0].text}</li>
 							</div>
 						)
 					})
 				}
+				{this.state.social.map(image => {
+					return <img src={image.image}></img>
+				})}
+			</div>
 
 				<Banner />
-				</FooterStyled>
+			</FooterStyled>
 			)
 		}
 	}
