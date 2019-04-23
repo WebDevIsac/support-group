@@ -11,11 +11,11 @@ const ContainerStyled = styled.div`
 	height: 100%; */
 	background: #E7EEED;
 	margin-top: 100px;
-	padding: 0 100px;
+	padding: 0 96px;
 
 	@media only screen and (max-width: 768px) {
 		margin-top: 80px;
-		padding: 0;
+		padding: 0 16px;
 	}
 `;
 

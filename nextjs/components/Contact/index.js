@@ -23,11 +23,7 @@ const ContactContainerStyled = styled.div`
 	@media only screen and (max-width: 768px) {
 		flex-direction: column;
 		height: 90%;
-		padding: 150px 24px 100px 24px;
-
-		h2 {
-			margin-left: 24px;
-		}
+		padding: 150px 0 100px 0;
 	}
 `;
 

@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Activities from '../Activities';
 import Contact from '../Contact';
 import InstagramFeed from './InstagramFeed';
+import GoogleMaps from './GoogleMaps';
+import FacebookFeed from './FacebookFeed';
 
 const BranchStyled = styled.div`
 	position: relative;
@@ -11,7 +13,7 @@ const BranchStyled = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	padding: 120px 0;
+	padding: 48px 0;
 
 	div {
 		position: absolute;
@@ -22,45 +24,22 @@ const BranchStyled = styled.div`
 		justify-content: flex-start;
 		align-items: center;
 	}
-
-	main {
-		width: 600px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		align-items: flex-start;
-	}
-
-	main section {
-		align-self: center;
-		width: 500px;
-		height: 500px;
-		transform: scale(1.2);
-		margin: 80px 0;
-		background: #fff;
-	}
 `;
 
 const Branch = ({ branch }) => {
+	console.log(branch);
 	return (
 		<Fragment>
 			<BranchStyled>
 				<div>
 					<h1>{branch.title.rendered}</h1>
 				</div>
-				<main>
-					<h2>{branch.acf.text}:</h2>
-					<section className="fb-page" data-href="https://www.facebook.com/SupportRestadGard/" data-tabs="timeline,events" data-width="500" 
-						data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-						<blockquote cite="https://www.facebook.com/SupportRestadGard/" className="fb-xfbml-parse-ignore">
-							<a href="https://www.facebook.com/SupportRestadGard/"></a>
-						</blockquote>
-					</section>
-				</main>
 			</BranchStyled>
+			<FacebookFeed/>
 			<Activities activities={branch.acf.activities}/>
 			<Contact/>
 			<InstagramFeed/>
+			<GoogleMaps branch={branch}/>
 		</Fragment>
 	);
 };

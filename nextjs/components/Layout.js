@@ -19,7 +19,7 @@ class Layout extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8888/wp-json/wp/v2/menus')
+		axios.get('http://localhost/wp-json/wp/v2/menus')
 		.then(responseMenus => {
 			const navbar = responseMenus.data.find(item => item.slug === "navbar");
 			const branches = responseMenus.data.find(item => item.slug === "branches");
@@ -29,14 +29,15 @@ class Layout extends Component {
 				branches: branches.acf.items,
 				languages: languages.acf.items,
 			});
-			setTimeout(() => {
+			// setTimeout(() => {
 				this.setState({
 					loaded: true
 				})
-			}, 2000);
+			// }, 2000);
 		});
 	}
 
+	
     render() {
 		if (!this.state.loaded) {
 			return <Loading/>
@@ -50,6 +51,7 @@ class Layout extends Component {
 					<meta charSet="utf-8"/>
 					<meta name="viewport" content="initial-scale=1.0, width=device-width"/>
 					<script async defer crossorigin="anonymous" src="https://connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v3.2"></script>
+					<script src="https://snapwidget.com/js/snapwidget.js"></script>
 				</Head>
 				<Navbar navbar={this.state.navbar} branches={this.state.branches} languages={this.state.languages}/>
 				<Container>

@@ -24,7 +24,7 @@ const ProjectsStyled = styled.div`
 		color: white;
 	}
 
-	div {
+	a {
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
@@ -40,7 +40,7 @@ const ProjectsStyled = styled.div`
 		max-width: 60%;
 	}
 
-	div:last-child img {
+	a:last-child img {
 		max-width: 80%;
 	}
 
@@ -57,7 +57,7 @@ const ProjectsStyled = styled.div`
 			margin-top: 60px;
 		}
 
-		div {
+		a {
 			width: 90%;
 			margin: 12px 0;
 		}
@@ -71,7 +71,7 @@ class Projects extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8888/wp-json/wp/v2/projects')
+		axios.get('http://localhost/wp-json/wp/v2/projects')
 		.then(response => {
 			this.setState({
 				projects: response.data
@@ -84,7 +84,7 @@ class Projects extends Component {
 				<h1>Projects</h1>
 				{
 					this.state.projects.map(project => {
-						return <Link href={`/projects/${project.slug}`}><div key={project.id}><img src={project.acf.image}></img></div></Link>
+						return <Link href={`/projects/${project.slug}`} key={project.id}><a href={`/projects/${project.slug}`}><img src={project.acf.image}></img></a></Link>
 					})
 				}
 			</ProjectsStyled>
