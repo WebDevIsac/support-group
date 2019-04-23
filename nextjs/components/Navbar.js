@@ -191,8 +191,6 @@ const Navbar = ({ navbar, branches, languages }) => {
 		}, 100);
 	}
 
-
-
 	return (
 		<NavbarStyled>
 			<div class="logo">
