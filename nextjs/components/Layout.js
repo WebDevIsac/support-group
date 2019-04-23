@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-
+import Button from './Button';
 import Head from 'next/head';
 import GlobalStyle from '../styles';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Container from './Container';
 import Loading from './Loading';
+import FooterMenu from './FooterMenu';
 // require('dotenv').config();
 
 class Layout extends Component {
@@ -57,7 +58,9 @@ class Layout extends Component {
 				<Container>
 					{this.props.children}
 				</Container>
-				<Footer/> 
+				<Button />
+				<FooterMenu />
+				<Footer/>
 			</Fragment>
 		);
     }

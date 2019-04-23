@@ -77,7 +77,7 @@ class Support extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost/wp-json/wp/v2/contents?slug=first')
+		axios.get('http://localhost:8888/wp-json/wp/v2/contents?slug=first')
 		.then(response => {
 			this.setState({
 				content: response.data[0]
