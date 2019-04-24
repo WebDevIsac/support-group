@@ -46,7 +46,7 @@ const ButtonStyled = styled.div`
 class Button extends Component {
 	render() {
 		setTimeout(() => {
-			let button = document.querySelector('#footer-button');
+		let button = document.querySelector('#footer-button');
 
 
 		let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
@@ -65,7 +65,7 @@ class Button extends Component {
 		});
 
 		const footer = document.querySelector('#footer-menu');
-		button.addEventListener('click', ( event ) => {
+		button.addEventListener('click', () => {
 			console.log('footer');
 			if (footer.classList.contains('showMenu')) {
 				footer.classList.remove('showMenu');
@@ -76,19 +76,8 @@ class Button extends Component {
 		})
 
 
-}, 2000);
+	}, 20000);
 
-		//
-		// const toggleStatus = 1;
-		// function toggleMenu() {
-		// 	if (toggleStatus == 1) {
-		// 	document.getElementById('menu').style.bottom = "700px";
-		// 	toggleStatus = 0;
-		// }	else if (toggleStatus == 0) {
-		// 	document.getElementById("menu").style.bottom = "0";
-		// 	toggleStatus = 1;
-		// }
-		// }
 		return(
 		<ButtonStyled className="button" id="footer-button">
 			<div className="bar-placement">

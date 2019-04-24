@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 const PartnersStyled = styled.div`
 	position: relative;
+	padding: 0 96px;
+	background: var(--milk-white);
 
 	main {
 		display: flex;
@@ -13,7 +15,7 @@ const PartnersStyled = styled.div`
 		align-items: center;
 		position: relative;
 		width: 100%;
-		padding: 204px 0 141px 0;
+		padding: 240px 0 60px 0;
 	}
 
 	h1 {
@@ -21,6 +23,7 @@ const PartnersStyled = styled.div`
 		top: 0;
 		left: 0;
 		margin-top: 65px;
+		margin-left: 96px;
 	}
 
 	img {
@@ -33,9 +36,8 @@ const PartnersStyled = styled.div`
 	}
 
 	@media screen and (max-width: 768px) {
+		padding: 0 16px;
 
-		margin-left: 16px;
-		
 		main {
 			flex-wrap: nowrap;
 			justify-content: initial;

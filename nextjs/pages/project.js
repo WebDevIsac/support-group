@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import dynamic from 'next/dynamic';
 
-import Layout from '../components/Layout';
+const Layout = dynamic(import('../components/Layout'), {
+	ssr: false
+});
 
 const projectStyled = styled.div`
 	/* display: flex;

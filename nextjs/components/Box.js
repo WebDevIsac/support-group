@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const BoxStyled = styled.div`
-    width: 100vw;
+    width: 100%;
 	height: 550px;
-	margin-left: -100px;
+	/* margin-left: -100px; */
+	margin-top: 100px;
     background: var(--pink);
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	display: flex;
@@ -15,7 +16,7 @@ const BoxStyled = styled.div`
 
 	section {
 		padding: 50px 100px;
-		width: 700px;
+		width: 600px;
 		color: white;
 	}
 
@@ -28,7 +29,7 @@ const BoxStyled = styled.div`
 
 	aside {
 		width: 700px;
-		padding: 0px 120px 0 0;
+		padding: 0px 96px 0 0;
 	}
 
 	img {
@@ -39,7 +40,7 @@ const BoxStyled = styled.div`
 		flex-direction: column-reverse;
 		margin: 0;
 		height: 100%;
-		width: 100vw;
+		width: 100%;
 		padding: 50px 0;
 
 		section {
@@ -86,7 +87,7 @@ class Box extends Component {
 
 	render() {
 		return (
-			<BoxStyled>
+			<BoxStyled id="1">
 				<section>
 					<h1>{this.state.header}</h1>
 					{

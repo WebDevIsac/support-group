@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import styled from 'styled-components';
-import Arrow from './Arrow';
 
 const SupportStyled = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 150px 100px;
+	padding: 64px 72px 0 64px;
+	margin: 0 96px;
 
 	section {
 		display: flex;
@@ -20,52 +20,56 @@ const SupportStyled = styled.div`
 	}
 
 	h1 {
-		font-size: 65px;
 		width: 570px;
-		font-weight: 900;
 	}
 
 	div {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: center;
-		width: 230px;
-		height: 50px;
+		width: 168px;
+		height: 48px;
 		background: #FE5A67;
-		text-transform: uppercase;
-		font-size: 24px;
+		font-size: var(--button-size);
 		font-weight: bold;
-		padding: 0 5px;
+		padding: 0 16px;
 		color: #fff;
 		cursor: pointer;
 	}
 
 	div:hover {
-		opacity: 0.8;
+		background: #EA5A67;
+	}
+
+	div img {
+		width: 32px;
+		height: 12.6px;
 	}
 
 	img {
-		width: 40%;
+		width: 600px;
 	}
 
 	@media only screen and (max-width: 768px) {
 		flex-direction: column;
-		padding: 0 16px 100px 16px;
+		padding: 0;
 		height: 60vh;
+		margin: 0 16px;
+
 
 		section {
 			min-height: 200px;
 		}
 
 		h1 {
-			font-size: var(--h2-size);
-			font-weight: var(--h2-weight);
 			width: 100%;
 		}
 
 		img {
-			width: 80%;
+			margin-top: 56px;
+			width: 227px;
+			height: 167px;
 		}
 	}
 `;
@@ -86,12 +90,21 @@ class Support extends Component {
 	}
 
 	render() {
+
+		const handleScroll = () => {
+			const element = document.getElementById('4');
+			element.scrollIntoView({
+				behavior: "smooth",
+				block: "center"
+			});
+		}
+
 		if (this.state.content) {
 			return (
 				<SupportStyled>
 					<section>
 						<h1>{this.state.content.acf.header}</h1>
-						<div>{this.state.content.acf.text} <Arrow/></div>
+						<div onClick={handleScroll}>Support us <img src="../static/data/arrow_white.svg"></img></div>
 					</section>
 					<img src={this.state.content.acf.image}></img>
 				</SupportStyled>

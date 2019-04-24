@@ -8,6 +8,8 @@ const InstagramFeedStyled = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding: 150px 0;
+	margin: 0 96px;
+	margin-top: 80px;
 
 	h1 {
 		position: absolute;
@@ -18,7 +20,7 @@ const InstagramFeedStyled = styled.div`
 	iframe {
 		border: none; 
 		overflow: hidden; 
-		width: 1344px; 
+		width: 100%; 
 		height: 658px;
 	}
 

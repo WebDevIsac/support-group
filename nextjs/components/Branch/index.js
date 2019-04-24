@@ -19,6 +19,7 @@ const BranchStyled = styled.div`
 		position: absolute;
 		top: 0;
 		left: 0;
+		margin-left: 96px;
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;

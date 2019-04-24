@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import dynamic from 'next/dynamic';
 
-import Layout from '../components/Layout';
-import Branch from '../components/Branch';
+const Layout = dynamic(import('../components/Layout'), {
+	ssr: false
+});
+const Branch = dynamic(import('../components/Branch'), {
+	ssr: false
+});
 
 class branch extends Component {
 

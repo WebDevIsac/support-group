@@ -12,7 +12,8 @@ const CardContainerStyled = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding-bottom: 100px;
+	margin: 0 96px;
+	padding: 100px 0 0 0;
 
 	@media only screen and (max-width: 768px) {
 		flex-direction: column;
@@ -37,7 +38,7 @@ class CardContainer extends Component {
 
 	render() {
 		return (
-			<CardContainerStyled id="1">
+			<CardContainerStyled id="0">
 				{
 					this.state.cards.map(card => {
 					return (

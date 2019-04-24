@@ -12,12 +12,12 @@ const FormInputStyled = styled.div`
 
 	input, textarea {
 		border: none;
-		border-bottom: 3px solid #000;
+		border-bottom: 2px solid #000;
 		height: 36px;
 		padding: 10px 25px;
 		font-size: 22px;
 		outline: 0;
-		transition: border 0.5s ease-in;
+		transition: border 0.3s ease-in;
 		background: transparent;
 	}
 
@@ -25,6 +25,7 @@ const FormInputStyled = styled.div`
 		height: 128px;
 		font-family: var(--font-family);
 		resize: none;
+		border: 2px solid #000;
 	}
 	
 	label {
@@ -68,10 +69,10 @@ const FormInputStyled = styled.div`
 		width: 100%;
 		stroke-dasharray: 2100%;
 		stroke-dashoffset: -2100%;
-		stroke-width: 6px;
+		stroke-width: 8px;
 		fill: transparent;
 		stroke: var(--pink);
-		transition: stroke-dasharray 2s;
+		transition: stroke-dasharray 1s;
 	}
 
 	&.transform .svg-wrapper rect {

@@ -8,8 +8,10 @@ const FormStyled = styled.form`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: left;
-	height: 100%;
+	height: 506px;
+	padding-bottom: 50px;
 	width: 40%;
+	position: relative;
 
 	.radio {
 		position: relative;
@@ -47,6 +49,28 @@ const FormStyled = styled.form`
 		border-color: var(--pink);
 	}
 
+	button {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		align-items: center;
+		width: 128px;
+		height: 48px;
+		outline: 0;
+		border: none;
+		background: var(--pink);
+		padding: 12px 16px;
+		color: white;
+		font-size: var(--button-size);
+	}
+
+	button img {
+		width: 32px;
+		height: 12,6px;
+		margin-left: 26px;
+	}
+
 	@media only screen and (max-width: 768px) {
 		width: 90%;
 
@@ -72,10 +96,14 @@ const updateRadio = (e) => {
 	span.classList.add('checked');
 }
 
+const handleSubmit = (e) => {
+	e.preventDefault();
+}
+
 
 const Form = () => {
     return (
-        <FormStyled>
+        <FormStyled action="/" method="post" onSubmit={handleSubmit}>
 			<FormInput label="Name" name="name" update={updateInput}/>
 			<FormInput label="Email" name="email" update={updateInput}/>
 			<FormInput label="Message" name="message" textarea={true} update={updateInput}/>
@@ -89,6 +117,7 @@ const Form = () => {
 				<span ></span>
 				<label>I want to become member of SGN</label>
 			</div>
+			<button type="submit">Send <img src="../../static/data/arrow_white.svg"/></button>
 		</FormStyled>
     );
 };

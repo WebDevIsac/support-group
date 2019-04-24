@@ -9,11 +9,11 @@ const GoogleMapsStyled = styled.div`
 		position: absolute;
 		top: 0;
 		left: 0;
+		margin-left: 96px;
 	}
 
 	iframe {
-		width: 100vw;
-		margin-left: -96px; 
+		width: 100%;
 		height: 385px;
 		border: none;
 		overflow: none; 
