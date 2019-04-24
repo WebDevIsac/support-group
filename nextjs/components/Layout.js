@@ -36,7 +36,7 @@ class Layout extends Component {
 		});
 	}
 
-	
+
     render() {
 		return (
 			<Fragment>

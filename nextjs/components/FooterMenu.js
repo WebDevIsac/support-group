@@ -64,13 +64,15 @@ flex-wrap: wrap-reverse;
 	width: 100%;
 	height: 100vh;
 	transform: translateY(700px);
+	transition: 0.4s;
 	color: white;
 	bottom: 0;
-	background-color: black;
+	background-color: var(--charcoal-grey);
 }
 
 .showMenu {
 transform: translateY(0);
+transition: 0.4s;
 }
 
 .footer-menu li {
@@ -81,13 +83,13 @@ transform: translateY(0);
 }
 
 .footer-menu li a {
-	font-size: 35px;
+	font-size: 40px;
 	text-decoration: none;
 	color: white;
 }
 
 .footer-image {
-	margin-top: 50px;
+	width: 50px;
 }
 
 
@@ -104,14 +106,66 @@ font-size: 20px;
 
 
 .button {
+display: flex;
+align-items: center;
+justify-content: center;
 z-index: 1;
-margin-left: 280px;
-margin-top: 20px;
+bottom: 0;
+right: 0;
+margin-right: 16px;
+margin-bottom: 16px;
 position: fixed;
 width: 70px;
 height: 70px;
 border-radius: 50%;
+box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
 background-color: var(--pink);
+
+}
+
+.bar-one {
+text-align: center;
+transform: rotate(45deg);
+position: absolute;
+width: 35px;
+height: 4px;
+background-color: #fff;
+
+}
+
+.bar-two {
+text-align: center;
+transform: rotate(-45deg);
+position: absolute;
+width: 35px;
+height: 4px;
+background-color: #fff;
+
+}
+
+.logo-placement {
+
+margin-top: 20px;
+margin-left: 20px;
+}
+
+.banner-tags {
+font-size: 24px !important;
+}
+
+.drop-down {
+height: 200px;
+position: absolute;
+}
+.arrow-position {
+	margin-left: 60px;
+	/* height: 200px;
+	margin-top: 10px;
+	position: absolute;
+	margin-left: 25px;
+	flex-direction: column;
+	display: flex;
+	justify-content: flex-start; */
 
 }
 
@@ -144,21 +198,49 @@ background-color: var(--pink);
 				<FooterMenuStyled>
 
 			<nav className="footer-menu" id="footer-menu">
+				<div className="logo-placement">
 				<Logo className="footer-image" color="white" width="200px"/>
-				<ul>
-					<li><a href="#">What we do</a></li>
-					<li><a href="#">About us</a></li>
-					<li><a href="#">Activities</a></li>
-					<li><a href="#">Contact</a></li>
-					<li><a href="#">Support us</a></li>
-				</ul>
+				</div>
+					<ul>
+						<li><a href="#">What we do</a></li>
+						<li><a href="#">About us</a></li>
+						<li><a href="#">Activities</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">Support us</a></li>
+						</ul>
 					<div className="menu-banner">
-						<li className="menu-banner-li"><a href="#">Branches</a></li>
-						<li className="menu-banner-li"><a href="#">EN</a></li>
-						<button id="menu-button" className="button">
-							<div className="bar"></div>
-							<div className="bar"></div>
-						</button>
+						<li className="menu-banner-li"><a className="banner-tags" href="#">Branches</a>
+							</li>
+							<div className="arrow-position">
+							<nav className="drop-down">
+							<ul>
+								<li>En</li>
+								<li>Swe</li>
+							</ul>
+							</nav>
+							<img className="arrow-down" src="/static/data/downarrow_white.svg" alt="arrow">
+							</img> </div>
+							<li className="menu-banner-li"><a className="banner-tags" href="#">EN</a>
+						</li>
+						<div className="arrow-position">
+						<nav className="drop-down">
+						<ul>
+							<li>English</li>
+							<li>Swedish</li>
+							<li>Somali</li>
+							<li>Persian</li>
+							<li>Arabic</li>
+							<li>Swe</li>
+							<li>Eritrea</li>
+						</ul>
+						</nav>
+						<img className="arrow-down" src="/static/data/downarrow_white.svg" alt="arrow">
+						</img> </div>
+
+							<button id="menu-button" className="button">
+								<div className="bar-one"></div>
+								<div className="bar-two"></div>
+							</button>
 					</div>
 				</nav>
 			</FooterMenuStyled>

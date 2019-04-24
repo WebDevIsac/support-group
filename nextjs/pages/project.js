@@ -41,11 +41,11 @@ class project extends Component {
 					<div className="image-placement">
 					<img src={project.acf.image}></img>
 					<div className="text-placement">
-					<p>{project.acf.description}</p>
+					<p className="content" dangerouslySetInnerHTML={{__html:project.acf.description}}></p>
 					<h3>{project.acf.content[0].header}</h3>
-					<p>{project.acf.content[0].text}</p>
+					<p className="content" dangerouslySetInnerHTML={{__html:project.acf.content[0].text}}></p>
 					<h3>{project.acf.content[1].header}</h3>
-					<p>{project.acf.content[1].text}</p>
+					<p  className="content"dangerouslySetInnerHTML={{__html:project.acf.content[1].text}}></p>
 					</div>
 					</div>
 				</projectStyled>

@@ -7,6 +7,9 @@ const ButtonStyled = styled.div`
 @media screen and (max-width: 768px) {
 
 	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	bottom: 0;
 	right: 0;
 	margin-right: 16px;
@@ -21,17 +24,17 @@ const ButtonStyled = styled.div`
 
 
 	&.changeColor {
+	transition: 0.2s;
 	box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
 	opacity: 1;
 }
 
-	.bar-placement {
-	width: 100%;
-}
+
 	.bar {
-	width: 40px;
+	text-align: center;
+	width: 35px;
 	margin: 8px;
-	height: 5px;
+	height: 4px;
 	background-color: #fff;
 
 }
@@ -50,7 +53,7 @@ class Button extends Component {
 
 
 		let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-		let lastScrollTop= scrollTop;
+		let lastScrollTop = scrollTop;
 
 		window.addEventListener('scroll', function () {
 		 scrollTop = document.body.scrollTop|| document.documentElement.scrollTop;

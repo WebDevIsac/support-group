@@ -15,7 +15,7 @@ class branch extends Component {
 		const slug = context.query.slug;
 
 		// Make request for posts
-		const response = await axios.get(`http://localhost/wp-json/wp/v2/branches?slug=${slug}`);
+		const response = await axios.get(`http://localhost:8888/wp-json/wp/v2/branches?slug=${slug}`);
 
 		// Return our only item in array from response to posts object in props
 		return {

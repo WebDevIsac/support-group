@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Projects from './Projects';
-import { css, value } from 'popmotion';
 
 // import Section from './Section';
 
@@ -170,36 +169,11 @@ class Activities extends Component {
 		});
 	}
 
-	getTotalItemsWidth = (items) => {
-		const { left } = items[0].getBoundingClientRect();
-		const { right } = items[items.length - 1].getBoundingClientRect();
-		return right - left;
-	}
 
-	carousel = (container) => {
-		// const slider = container.querySelector('main');
-		// const items = slider.querySelectorAll('div');
-
-		// const sliderVisibleWidth = slider.offsetWidth;
-		// const totalItemsWidth = this.getTotalItemsWidth(items);
-		
-		// const maxXOffset = 0;
-		// const minXOffset = - (totalItemsWidth - sliderVisibleWidth);
-		// // console.log(css(slider));
-		// const sliderRenderer = css(slider);
-		
-		// const sliderX = value(0, (x) => sliderRenderer.set('x', x));
-		// console.log(sliderX);
-		// sliderX.set(-100)
-	}
 
 render() {
-	
-		if (this.state.isFetched) {
-			this.carousel(document.querySelector('.activities'));
-		}
 
-		
+
 		return (
 			<ActivitiesStyled className="activities" id="2">
 				<h1>Activities</h1>

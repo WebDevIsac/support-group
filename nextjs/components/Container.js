@@ -19,6 +19,10 @@ const ContainerStyled = styled.div`
 		flex-direction: column;
 	}
 
+	.content {
+	margin-bottom: 80px;
+}
+
 	.text-placement {
 		margin-top: 50px;
 		padding: 30px;
@@ -52,6 +56,10 @@ const ContainerStyled = styled.div`
 			margin-top: 20px;
 			padding: 30px;
 	}
+
+		.content {
+		margin-bottom: 80px;
+}
 
 }
 `;
