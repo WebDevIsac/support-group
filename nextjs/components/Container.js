@@ -64,7 +64,6 @@ const ContainerStyled = styled.div`
 
 		.content {
 		margin-bottom: 80px;
-		letter-spacing: .5px;
 }
 
 }

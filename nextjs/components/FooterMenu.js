@@ -67,7 +67,7 @@ flex-wrap: wrap-reverse;
 	transition: 0.4s;
 	color: white;
 	bottom: 0;
-	background-color: black;
+	background-color: var(--charcoal-grey);
 }
 
 .showMenu {
@@ -153,14 +153,20 @@ margin-left: 20px;
 font-size: 24px !important;
 }
 
-.arrow-down {
-	margin-left: 110px;
+.drop-down {
+height: 200px;
+position: absolute;
+}
+.arrow-position {
+	margin-left: 60px;
+	/* height: 200px;
+	margin-top: 10px;
 	position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 9px solid #fff;
+	margin-left: 25px;
+	flex-direction: column;
+	display: flex;
+	justify-content: flex-start; */
+
 }
 
 }
@@ -204,16 +210,37 @@ font-size: 24px !important;
 						</ul>
 					<div className="menu-banner">
 						<li className="menu-banner-li"><a className="banner-tags" href="#">Branches</a>
-							<div class="arrow-down"></div>
 							</li>
+							<div className="arrow-position">
+							<nav className="drop-down">
+							<ul>
+								<li>En</li>
+								<li>Swe</li>
+							</ul>
+							</nav>
+							<img className="arrow-down" src="/static/data/downarrow_white.svg" alt="arrow">
+							</img> </div>
 							<li className="menu-banner-li"><a className="banner-tags" href="#">EN</a>
-							<div class="arrow-down"></div>
 						</li>
+						<div className="arrow-position">
+						<nav className="drop-down">
+						<ul>
+							<li>English</li>
+							<li>Swedish</li>
+							<li>Somali</li>
+							<li>Persian</li>
+							<li>Arabic</li>
+							<li>Swe</li>
+							<li>Eritrea</li>
+						</ul>
+						</nav>
+						<img className="arrow-down" src="/static/data/downarrow_white.svg" alt="arrow">
+						</img> </div>
 
-						<button id="menu-button" className="button">
-							<div className="bar-one"></div>
-							<div className="bar-two"></div>
-						</button>
+							<button id="menu-button" className="button">
+								<div className="bar-one"></div>
+								<div className="bar-two"></div>
+							</button>
 					</div>
 				</nav>
 			</FooterMenuStyled>

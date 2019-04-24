@@ -35,7 +35,7 @@ const PartnersStyled = styled.div`
 	@media screen and (max-width: 768px) {
 
 		margin-left: 16px;
-		
+
 		main {
 			flex-wrap: nowrap;
 			justify-content: initial;
@@ -67,7 +67,7 @@ class Partners extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost/wp-json/wp/v2/partners?order=asc&per_page=100')
+		axios.get('http://localhost:8888/wp-json/wp/v2/partners?order=asc&per_page=100')
 		.then(response => {
 			this.setState({
 				partners: response.data

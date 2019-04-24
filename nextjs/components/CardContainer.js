@@ -27,7 +27,7 @@ class CardContainer extends Component {
 	}
 
 	componentDidMount() {
-		axios.get(`http://localhost/wp-json/wp/v2/cards`)
+		axios.get(`http://localhost:8888/wp-json/wp/v2/cards`)
 		.then(response => {
 			this.setState({
 				cards: response.data

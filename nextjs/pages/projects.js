@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 class projects extends Component {
 	static async getInitialProps() {
 		// Make request for posts
-		const response = await axios.get(`http://localhost/wp-json/wp/v2/projects`);
+		const response = await axios.get(`http://localhost:8888/wp-json/wp/v2/projects`);
 
 		// Return our only item in array from response to posts object in props
 		return {
