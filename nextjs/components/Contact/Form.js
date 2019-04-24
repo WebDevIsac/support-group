@@ -69,7 +69,6 @@ const updateRadio = (e) => {
 	const span = element.querySelector('span');
 
 	radio.checked = true;
-	console.log(radio);
 	span.classList.add('checked');
 }
 

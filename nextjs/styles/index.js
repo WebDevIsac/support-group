@@ -12,11 +12,27 @@ body {
 	max-width: 100%;
 }
 
+/* h1, h2, h3, h4, h5, h6, p, ul {
+	margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+} */
+
 h1 {
 	font-size: var(--h1-size);
 	font-weight: var(--h1-weight);
 	letter-spacing: var(--h1-spacing);
-	line-height: 
+	line-height: var(--h1-height);
+}
+
+@media screen and (max-width: 768px) {
+	h1 {
+		font-size: var(--mobile-h1-size);
+		font-weight: var(--mobile-h1-weight);
+		letter-spacing: var(--mobile-h1-spacing);
+		line-height: var(--mobile-h1-height);
+	}
 }
 
 h2 {
@@ -48,10 +64,16 @@ ul {
 :root {
 	/* Font */
 	--font-family: 'Roboto';
+
 	--h1-size: 62px;
 	--h1-weight: bold;
 	--h1-height: 65px;
 	--h1-spacing: -1.5px;
+
+	--mobile-h1-size: 42px;
+	--mobile-h1-weight: bold;
+	--mobile-h1-height: 46px;
+	--mobile-h1-spacing: -1.5px;
 	
 	--h2-size: 40px;
 	--h2-weight: bold;

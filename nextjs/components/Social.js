@@ -27,7 +27,7 @@ class Social extends Component {
 }
 
 componentDidMount() {
-  fetch('http://localhost:8888/wp-json/wp/v2/social')
+  fetch('http://localhost/wp-json/wp/v2/social')
      .then(response => response.json())
      .then(json => {
 

@@ -19,7 +19,7 @@ class index extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8888/wp-json/wp/v2/sites?slug=start')
+		axios.get('http://localhost/wp-json/wp/v2/sites?slug=start')
 		.then(response => {
 			this.setState({
 				content: response.data[0].acf,
@@ -34,7 +34,7 @@ class index extends Component {
 				<Support/>
 				<CardContainer/>
 				<Box/>
-				{/* <Activities activities={this.state.activities}/> */}
+				<Activities activities={this.state.activities}/>
 				<Projects/>
 				<Contact/>
 				<Partners/>

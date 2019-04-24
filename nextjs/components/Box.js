@@ -19,7 +19,7 @@ const BoxStyled = styled.div`
 		color: white;
 	}
 
-	section h1 {
+	h1 {
 		font-size: var(--h1-size);
 		font-weight: var(--h1-weight);
 		margin: 0;
@@ -49,6 +49,10 @@ const BoxStyled = styled.div`
 			padding-right: 24px;
 		}
 
+		h1 {
+			font-size: 42px;
+		}
+
 		aside {
 			width: 100%;
 			padding: 0;
@@ -70,10 +74,10 @@ class Box extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8888/wp-json/wp/v2/contents?slug=smiles')
+		axios.get('http://localhost/wp-json/wp/v2/contents?slug=smiles')
 		.then(response => {
 			this.setState({
-				header: response.data[0].title.rendered,
+				header: response.data[0].acf.header,
 				textSplit: response.data[0].acf.text.split('<br />'),
 				image: response.data[0].acf.image
 			})

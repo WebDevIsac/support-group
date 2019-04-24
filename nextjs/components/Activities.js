@@ -7,18 +7,21 @@ import Projects from './Projects';
 
 const ActivitiesStyled = styled.div`
 	position: relative;
-	margin: 25px;
-	padding: 160px 0;
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(auto, 218px);
-	grid-column-gap: 24px;
-	grid-row-gap: 100px;
+	margin: 40px 16px;
 
 	h1 {
 		position: absolute;
 		top: 0;
 		left: 0;
+	}
+
+	main {
+		padding: 160px 0;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(auto, 218px);
+		grid-column-gap: 24px;
+		grid-row-gap: 100px;
 	}
 
 	div {
@@ -42,33 +45,66 @@ const ActivitiesStyled = styled.div`
 	}
 
 	@media only screen and (max-width: 768px) {
-		width: 100%;
-		padding: 0;
-		overflow-x: hidden;
+
+		main {
+			display: flex;
+			flex-direction: row;
+			align-items: flex-start;
+			padding: 0;
+			overflow: hidden;
+			overflow-x: scroll;
+		}
+
+		div {
+			min-width: 196px;
+			margin-left: 16px;
+		}
+
+		div:first-child {
+			margin-left: 0;
+		}
+
+		h1 {
+			position: sticky;
+			margin-block-start: 0;
+    		margin-block-end: 0;
+		}
 	}
 `;
 
 class Activities extends Component {
 
 	state = {
-		activities: []
+		activities: [],
+		isFetched: false
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8888/wp-json/wp/v2/activities')
+		axios.get('http://localhost/wp-json/wp/v2/activities')
 		.then(response => {
 			let filtered = response.data.filter(activity => {
 				return this.props.activities.find(id => activity.id === id);
 			});
 			this.setState({
-				activities: filtered
+				activities: filtered,
 			});
+			setTimeout(() => {
+				this.setState({
+					isFetched: true
+				});
+			}, 1000);
 		});
 	}
-	render() {
+
+
+
+render() {
+
+
 		return (
-			<ActivitiesStyled>
+			<ActivitiesStyled className="activities">
 				<h1>Activities</h1>
+				<main>
 					{
 						this.state.activities.map(activity => {
 							return (
@@ -80,6 +116,7 @@ class Activities extends Component {
 							)
 						})
 					}
+				</main>
 			</ActivitiesStyled>
 		)
 	}
