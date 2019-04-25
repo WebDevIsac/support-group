@@ -55,7 +55,7 @@ const SupportStyled = styled.div`
 		flex-direction: column;
 		padding: 0;
 		height: 60vh;
-		margin: 0 16px;
+		margin: 0 16px 60px 16px;
 
 
 		section {
@@ -64,6 +64,10 @@ const SupportStyled = styled.div`
 
 		h1 {
 			width: 100%;
+		}
+
+		div img {
+			margin: 0;
 		}
 
 		img {

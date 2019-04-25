@@ -41,7 +41,7 @@ const BoxStyled = styled.div`
 		margin: 0;
 		height: 100%;
 		width: 100%;
-		padding: 50px 0;
+		padding: 60px 0;
 
 		section {
 			width: 90%;
@@ -52,6 +52,7 @@ const BoxStyled = styled.div`
 
 		h1 {
 			font-size: 42px;
+			margin: 24px 0;
 		}
 
 		aside {

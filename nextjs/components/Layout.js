@@ -54,8 +54,8 @@ class Layout extends Component {
 				<Container>
 					{this.props.children}
 				</Container>
-				{/* <Button />
-				<FooterMenu /> */}
+				<Button />
+				<FooterMenu />
 				<Footer/>
 			</Fragment>
 		);

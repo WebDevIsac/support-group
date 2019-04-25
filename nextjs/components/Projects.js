@@ -66,6 +66,7 @@ const ProjectsStyled = styled.div`
 		flex-direction: column;
 		padding: 150px 0 50px 0;
 		width: 100%;
+		margin: 0;
 
 		h1 {
 			margin: 0;

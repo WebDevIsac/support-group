@@ -65,7 +65,17 @@ const InformationStyled = styled.div`
 	}
 
 	@media only screen and (max-width: 768px) {
-		width: 90%;
+		width: 100%;
+		margin: 70px 16px 0 16px;
+
+		section {
+			justify-content: space-between;
+		}
+
+		section div {
+			text-align: left;
+		}
+
 	}
 `;
 

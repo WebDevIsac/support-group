@@ -46,7 +46,8 @@ const ActivitiesStyled = styled.div`
 
 	@media only screen and (max-width: 768px) {
 
-		margin: 40px 16px;
+		margin: 0 16px;
+		padding: 40px 0 60px 0;
 
 		main {
 			display: flex;
@@ -69,7 +70,7 @@ const ActivitiesStyled = styled.div`
 		h1 {
 			position: sticky;
 			margin-block-start: 0;
-    		margin-block-end: 0;
+    		/* margin-block-end: 0; */
 		}
 
 

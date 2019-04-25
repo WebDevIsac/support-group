@@ -5,7 +5,7 @@ import Form from './Form';
 import Information from './Information';
 
 const ContactContainerStyled = styled.div`
-	height: 865px;
+	height: 100%;
 	padding: 0 96px;
 	display: flex;
 	flex-direction: row;
@@ -27,6 +27,14 @@ const ContactContainerStyled = styled.div`
 		flex-direction: column;
 		height: 90%;
 		padding: 150px 16px 100px 16px;
+		text-align: center;
+
+		h1 {
+			margin-top: 72px;
+			margin-left: 0;
+			width: 100%;
+			text-align: center;
+		}
 	}
 `;
 

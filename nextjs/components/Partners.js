@@ -42,7 +42,12 @@ const PartnersStyled = styled.div`
 			flex-wrap: nowrap;
 			justify-content: initial;
 			padding: 32px 0 32px 0;
-			overflow-x: scroll;
+			animation: scroll 30s linear infinite;
+		}
+
+		@keyframes scroll {
+			0% { transform: translateX(0); }
+			100% { transform: translateX(calc(-250px * 7))}
 		}
 
 		h1 {
@@ -52,13 +57,14 @@ const PartnersStyled = styled.div`
 		img {
 			width: 196px;
 			margin: 0;
-			margin-left: 32px;
+			margin-left: 72px;
 			flex-basis: 0%;
 		}
 
 		img:first-child {
 			margin: 0;
 		}
+
 	}
 `;
 
