@@ -353,7 +353,7 @@ cursor:pointer;
 	}
 
 		render() {
-console.log(this.state.footer);
+		console.log(this.state.footer);
 			return(
 				<FooterStyled>
 				<div className="logo-position">
@@ -396,6 +396,7 @@ console.log(this.state.footer);
 								return <li>{item.text}</li>
 							})
 						}
+							
 						</div>
 						)
 					})
