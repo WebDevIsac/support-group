@@ -14,7 +14,7 @@ const ButtonStyled = styled.div`
 	right: 0;
 	margin-right: 16px;
 	margin-bottom: 16px;
-	opacity: 0.57;
+	opacity: 1;
 	position: fixed;
 	box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
 	width: 70px;
@@ -25,20 +25,17 @@ const ButtonStyled = styled.div`
 
 	&.changeColor {
 	transition: 0.2s;
-	box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
-	opacity: 1;
+	opacity: 0.57;
 }
 
 
 	.bar {
-	text-align: center;
-	width: 35px;
-	margin: 8px;
-	height: 4px;
-	background-color: #fff;
-
-}
-
+		text-align: center;
+		width: 35px;
+		margin: 8px;
+		height: 4px;
+		background-color: #fff;
+	}
 }
 
 `;
@@ -49,7 +46,7 @@ const ButtonStyled = styled.div`
 class Button extends Component {
 	render() {
 		setTimeout(() => {
-			let button = document.querySelector('#footer-button');
+		let button = document.querySelector('#footer-button');
 
 
 		let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
@@ -57,32 +54,31 @@ class Button extends Component {
 
 		window.addEventListener('scroll', function () {
 		 scrollTop = document.body.scrollTop|| document.documentElement.scrollTop;
-		  if(scrollTop < lastScrollTop) {
-		    button.classList.add('changeColor');
-		}   else {
+		  if (scrollTop < lastScrollTop) {
 		    button.classList.remove('changeColor');
+		}   else {
+		    button.classList.add('changeColor');
 		}
 		  lastScrollTop = scrollTop;
-
-
 		});
+	}, 500);
 
+	const handleButton = () => {
 		const footer = document.querySelector('#footer-menu');
-		button.addEventListener('click', ( event ) => {
-			console.log('footer');
-			if (footer.classList.contains('showMenu')) {
+		const body = document.querySelector('body');
+		if (footer.classList.contains('showMenu')) {
+			setTimeout(() => {
 				footer.classList.remove('showMenu');
-			}
-			else {
-				footer.classList.add('showMenu');
-			}
-		})
-
-
-}, 2000);
+			}, timeout);
+		}
+		else {
+			footer.classList.add('showMenu');
+			// body.style.overflowY = 'hidden';
+		}
+	}
 
 		return(
-		<ButtonStyled className="button" id="footer-button">
+		<ButtonStyled className="button" id="footer-button" onClick={handleButton}> 
 			<div className="bar-placement">
 			<div className="bar"></div>
 			<div className="bar"></div>

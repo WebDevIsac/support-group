@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const BoxStyled = styled.div`
-    width: 100vw;
+    width: 100%;
 	height: 550px;
-	margin-left: -100px;
+	/* margin-left: -100px; */
+	margin-top: 100px;
     background: var(--pink);
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	display: flex;
@@ -15,7 +16,7 @@ const BoxStyled = styled.div`
 
 	section {
 		padding: 50px 100px;
-		width: 700px;
+		width: 600px;
 		color: white;
 	}
 
@@ -28,7 +29,7 @@ const BoxStyled = styled.div`
 
 	aside {
 		width: 700px;
-		padding: 0px 120px 0 0;
+		padding: 0px 96px 0 0;
 	}
 
 	img {
@@ -39,8 +40,8 @@ const BoxStyled = styled.div`
 		flex-direction: column-reverse;
 		margin: 0;
 		height: 100%;
-		width: 100vw;
-		padding: 50px 0;
+		width: 100%;
+		padding: 60px 0;
 
 		section {
 			width: 90%;
@@ -51,6 +52,7 @@ const BoxStyled = styled.div`
 
 		h1 {
 			font-size: 42px;
+			margin: 24px 0;
 		}
 
 		aside {
@@ -74,7 +76,7 @@ class Box extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8888/wp-json/wp/v2/contents?slug=smiles')
+		axios.get('http://localhost/wp-json/wp/v2/contents?slug=smiles')
 		.then(response => {
 			this.setState({
 				header: response.data[0].acf.header,
@@ -86,7 +88,7 @@ class Box extends Component {
 
 	render() {
 		return (
-			<BoxStyled>
+			<BoxStyled id="1">
 				<section>
 					<h1>{this.state.header}</h1>
 					{

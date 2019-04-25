@@ -19,6 +19,7 @@ const BranchStyled = styled.div`
 		position: absolute;
 		top: 0;
 		left: 0;
+		margin-left: 96px;
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
@@ -37,9 +38,9 @@ const Branch = ({ branch }) => {
 			</BranchStyled>
 			<FacebookFeed/>
 			<Activities activities={branch.acf.activities}/>
-			<Contact/>
 			<InstagramFeed/>
 			<GoogleMaps branch={branch}/>
+			<Contact/>
 		</Fragment>
 	);
 };

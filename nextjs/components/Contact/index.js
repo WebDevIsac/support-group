@@ -5,32 +5,43 @@ import Form from './Form';
 import Information from './Information';
 
 const ContactContainerStyled = styled.div`
-	height: 550px;
+	height: 100%;
+	padding: 0 96px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-start;
 	position: relative;
-	padding: 200px 0 100px 0;
+	padding-top: 255px;
+	background: var(--mist);
 
-	h2 {
+	h1 {
 		position: absolute;
 		top: 0;
 		left: 0;
-		margin-top: 70px;
+		margin-top: 96px;
+		margin-left: 96px;
 	}
 
 	@media only screen and (max-width: 768px) {
 		flex-direction: column;
 		height: 90%;
-		padding: 150px 0 100px 0;
+		padding: 150px 16px 100px 16px;
+		text-align: center;
+
+		h1 {
+			margin-top: 72px;
+			margin-left: 0;
+			width: 100%;
+			text-align: center;
+		}
 	}
 `;
 
 const ContactContainer = () => {
 	return (
-		<ContactContainerStyled>
-			<h2>Contact</h2>
+		<ContactContainerStyled id="3">
+			<h1>Contact</h1>
 			<Form/>
 			<Information/>
 		</ContactContainerStyled>

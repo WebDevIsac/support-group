@@ -334,7 +334,7 @@ cursor:pointer;
 
 	componentDidMount(){
 		const api = process.env.WP_KEY;
-		axios.get(`http://localhost:8888/wp-json/wp/v2/footer?order=asc`)
+		axios.get(`http://localhost/wp-json/wp/v2/footer?order=asc`)
 		.then(res => {
 			let isMobile = window.innerWidth < 768 ? "social" : null
 			let filtered = res.data.filter(item => {

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import dynamic from 'next/dynamic';
 
-import Layout from '../components/Layout';
+const Layout = dynamic(import('../components/Layout'), {
+	ssr: false
+});
 
 const projectStyled = styled.div`
 	/* display: flex;
@@ -21,7 +24,7 @@ class project extends Component {
 		const slug = context.query.slug;
 
 		// Make request for posts
-		const response = await axios.get(`http://localhost:8888/wp-json/wp/v2/projects?slug=${slug}`)
+		const response = await axios.get(`http://localhost/wp-json/wp/v2/projects?slug=${slug}`)
 
 		// Return our only item in array from response to posts object in props
 		return {

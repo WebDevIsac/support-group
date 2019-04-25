@@ -11,7 +11,7 @@ const NavbarStyled = styled.nav`
 	left: 0;
 	width: 100vw;
 	height: 100px;
-	background: #f4f4f4;
+	background: var(--cloud-white);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -22,7 +22,7 @@ const NavbarStyled = styled.nav`
 		position: absolute;
 		top: 0;
 		left: 0;
-		margin: 24px 0px 24px 100px;
+		margin: 24px 0px 24px 96px;
 	}
 
 	img {
@@ -33,7 +33,7 @@ const NavbarStyled = styled.nav`
 	ul {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: flex-end;
 		width: 65%;
 		padding-inline-start: 0;
@@ -44,27 +44,30 @@ const NavbarStyled = styled.nav`
 		height: 60px;
 	}
 
-	ul a {
+	ul li {
+		margin-left: 48px;
+		cursor: pointer;
 		color: black;
-		text-decoration: none;
+		list-style-type: none;
 		font-weight: bold;
 		font-size: var(--h3-size);
 		font-weight: var(--h3-weight);
 	}
-
-	ul li {
-		list-style-type: none;
+	
+	.navbar {
+		margin-left: 332px;
+		justify-content: flex-start;
 	}
 
 	.tools {
 		height: 60px;
-		padding: 20px 40px;
+		padding: 20px 112px 20px 48px;
 		position: relative;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: flex-end;
-		width: 15%;
+		width: 296px;
 		background: var(--pink);
 		color: white;
 		font-size: var(--h3-size);
@@ -80,7 +83,8 @@ const NavbarStyled = styled.nav`
 	.menu {
 		position: absolute;
 		top: 0;
-		width: 100px;
+		width: 96px;
+		height: 384px;
 		margin: 0;
 		height: initial;
 		margin-top: 100px;
@@ -97,12 +101,14 @@ const NavbarStyled = styled.nav`
 
 	#branches {
 		left: 0;
-		margin-left: 10px;
+		margin-left: 22px;
 	}
 
 	#languages {
+		width: 72px;
+		height: 290px;
 		right: 0;
-		margin-right: 40px;
+		margin-right: 112px;
 	}
 
 	.menu li {
@@ -113,6 +119,7 @@ const NavbarStyled = styled.nav`
 	.menu li a {
 		color: white;
 		font-size: 16px;
+		text-decoration: none;
 	}
 
 	.tools > .toggle {
@@ -123,16 +130,15 @@ const NavbarStyled = styled.nav`
 		height: 80px;
 		justify-content: flex-end;
 		align-items: center;
-
-
 		top: 0;
 		left: 0;
 		width: 100vw;
-		height: 100px;
-		background: #E7EEED;
+		height: 72px;
+		position: absolute;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
+		box-shadow: none;
 
 		.logo {
 			margin-left: 10px;
@@ -157,6 +163,9 @@ const NavbarStyled = styled.nav`
 			color: black;
 			font-size: var(--p-size);
 			font-weight: var(--p-weight);
+			position: absolute;
+			right: 0;
+			margin-right: 16px;
 		}
 
 		.menu {
@@ -171,7 +180,7 @@ const NavbarStyled = styled.nav`
 	}
 `;
 
-const Navbar = ({ navbar, branches, languages }) => {
+const Navbar = ({ page, navbar, branches, languages }) => {
 
 	const handleBranch = () => {
 		const languages = document.querySelector('#languages');
@@ -191,6 +200,38 @@ const Navbar = ({ navbar, branches, languages }) => {
 		}, 100);
 	}
 
+	setTimeout(() => {
+		const urlQuery = window.location.search;
+		if (urlQuery) {
+			setTimeout(() => {
+				const newIndex = urlQuery[1];
+				smoothScroll(newIndex);
+			}, 4000);
+		}
+		const navItems = document.querySelectorAll('.navbar li');
+		const navItemsArr = Array.from(navItems);
+		navItemsArr.forEach((item, index) => {
+			item.addEventListener('click', () => {
+				if (page !== "start") {
+					window.location = `/?${index}`;
+				}
+				else {
+					smoothScroll(index);
+				}
+			});
+		});
+	}, 200);
+
+	const smoothScroll = (index) => {
+		const element = document.getElementById(index);
+		
+		element.scrollIntoView({
+			behavior: "smooth",
+			block: "center"
+		});
+		history.replaceState(null,null,'/');
+	}
+
 	return (
 		<NavbarStyled>
 			<div class="logo">
@@ -200,7 +241,7 @@ const Navbar = ({ navbar, branches, languages }) => {
 				{
 					navbar.map((item, index) => {
 						return (
-							<a href="/" key={index}><li>{item.text}</li></a>
+							<li key={index}>{item.text}</li>
 						)
 					})
 				}

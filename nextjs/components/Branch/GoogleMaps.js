@@ -9,11 +9,11 @@ const GoogleMapsStyled = styled.div`
 		position: absolute;
 		top: 0;
 		left: 0;
+		margin-left: 96px;
 	}
 
 	iframe {
-		width: 100vw;
-		margin-left: -96px; 
+		width: 100%;
 		height: 385px;
 		border: none;
 		overflow: none; 
@@ -23,8 +23,15 @@ const GoogleMapsStyled = styled.div`
 	}
 
 	@media screen and (max-width: 768px) {
-		iframe {
-			margin-left: -16px;
+		margin: 0;
+		margin-top: 80px;
+		padding: 0;
+
+		h1 {
+			margin: 0;
+			margin-bottom: 44px;
+			position: initial;
+			text-align: center;
 		}
 	}
 `;

@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 const PartnersStyled = styled.div`
 	position: relative;
+	padding: 0 96px;
+	background: var(--milk-white);
 
 	main {
 		display: flex;
@@ -13,7 +15,7 @@ const PartnersStyled = styled.div`
 		align-items: center;
 		position: relative;
 		width: 100%;
-		padding: 204px 0 141px 0;
+		padding: 240px 0 60px 0;
 	}
 
 	h1 {
@@ -21,6 +23,7 @@ const PartnersStyled = styled.div`
 		top: 0;
 		left: 0;
 		margin-top: 65px;
+		margin-left: 96px;
 	}
 
 	img {
@@ -33,14 +36,18 @@ const PartnersStyled = styled.div`
 	}
 
 	@media screen and (max-width: 768px) {
-
-		margin-left: 16px;
+		padding: 0 16px;
 
 		main {
 			flex-wrap: nowrap;
 			justify-content: initial;
 			padding: 32px 0 32px 0;
-			overflow-x: scroll;
+			animation: scroll 30s linear infinite;
+		}
+
+		@keyframes scroll {
+			0% { transform: translateX(0); }
+			100% { transform: translateX(calc(-250px * 7))}
 		}
 
 		h1 {
@@ -50,13 +57,14 @@ const PartnersStyled = styled.div`
 		img {
 			width: 196px;
 			margin: 0;
-			margin-left: 32px;
+			margin-left: 72px;
 			flex-basis: 0%;
 		}
 
 		img:first-child {
 			margin: 0;
 		}
+
 	}
 `;
 
@@ -67,7 +75,7 @@ class Partners extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8888/wp-json/wp/v2/partners?order=asc&per_page=100')
+		axios.get('http://localhost/wp-json/wp/v2/partners?order=asc&per_page=100')
 		.then(response => {
 			this.setState({
 				partners: response.data

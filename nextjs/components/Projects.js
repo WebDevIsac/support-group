@@ -4,8 +4,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 const ProjectsStyled = styled.div`
-	width: 100%;
-	margin-left: -100px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -13,7 +11,8 @@ const ProjectsStyled = styled.div`
 	flex-wrap: wrap;
 	position: relative;
 	background: var(--pink);
-	padding: 200px 100px;
+	padding: 200px 96px 96px 96px;
+	margin-top: 100px;
 
 	h1 {
 		position: absolute;
@@ -29,10 +28,10 @@ const ProjectsStyled = styled.div`
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
-		width: 30%;
+		width: 31.5%;
 		height: 124px;
 		background: white;
-		margin: 12px;
+		margin: 14px;
 	}
 
 	img {
@@ -40,16 +39,34 @@ const ProjectsStyled = styled.div`
 		max-width: 60%;
 	}
 
-	a:last-child img {
-		max-width: 80%;
+	a:nth-child(2) img {
+		width: 388.85px;
+		height: 26.69px;
 	}
+
+	a:nth-child(3) img {
+		width: 171px;
+		height: 46.46px;
+	}
+
+	a:nth-child(4) img {
+		width: 172px;
+		height: 105px;
+	}
+
+	a:nth-child(5) img {
+		width: 177.71px;
+		height: 90.24px;
+	}
+
 
 
 	@media only screen and (max-width: 768px) {
 		flex-wrap: nowrap;
 		flex-direction: column;
 		padding: 150px 0 50px 0;
-		margin-left: 0;
+		width: 100%;
+		margin: 0;
 
 		h1 {
 			margin: 0;
@@ -71,7 +88,7 @@ class Projects extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8888/wp-json/wp/v2/projects')
+		axios.get('http://localhost/wp-json/wp/v2/projects?order=asc')
 		.then(response => {
 			this.setState({
 				projects: response.data

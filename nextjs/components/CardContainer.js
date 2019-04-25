@@ -12,11 +12,14 @@ const CardContainerStyled = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding-bottom: 100px;
+	margin: 0 96px;
+	padding: 100px 0 0 0;
 
 	@media only screen and (max-width: 768px) {
 		flex-direction: column;
 		height: 100%;
+		margin: 0;
+		padding: 0;
 	}
 `;
 
@@ -27,7 +30,7 @@ class CardContainer extends Component {
 	}
 
 	componentDidMount() {
-		axios.get(`http://localhost:8888/wp-json/wp/v2/cards`)
+		axios.get(`http://localhost/wp-json/wp/v2/cards`)
 		.then(response => {
 			this.setState({
 				cards: response.data
@@ -37,7 +40,7 @@ class CardContainer extends Component {
 
 	render() {
 		return (
-			<CardContainerStyled id="1">
+			<CardContainerStyled id="0">
 				{
 					this.state.cards.map(card => {
 					return (

@@ -3,24 +3,20 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CardStyled = styled.div`
-	width: 500px;
+	width: 30%;
 	height: 700px;
 	color: #000;
-	margin: 0 15px;
+	margin: 0;
 	box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
 
 	img {
 		width: 100%;
 		border-bottom: 10px solid #FE5A67;
-		max-height: 300px;
+		/* max-height: 300px; */
 	}
 
 	div {
 		padding: 0 40px;
-	}
-
-	h1 {
-		font-size: 44px;
 	}
 
 	p {
@@ -41,7 +37,7 @@ const Card = ({ card }) => {
 		<CardStyled>
 			<img src={card.acf.image} alt="photography"/>
 			<div>
-				<h1>{card.acf.header}</h1>
+				<h2>{card.acf.header}</h2>
 				{textSplit.map((text, index) => {
 					return <p key={index}>{text}</p>
 				})}
