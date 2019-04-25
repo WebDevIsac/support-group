@@ -28,7 +28,6 @@ const BranchStyled = styled.div`
 `;
 
 const Branch = ({ branch }) => {
-	console.log(branch);
 	return (
 		<Fragment>
 			<BranchStyled>

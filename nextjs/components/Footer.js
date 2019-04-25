@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from "axios";
 import Banner from './Banner';
 import Logo from './Logo';
@@ -43,8 +43,13 @@ height: 180px;
 color: white;
 }
 
+.menuItem img {
+	margin-left: 8px;
+}
+
 .menuItem li {
 margin-bottom: 10px;
+position: relative;
 }
 
 .menuItemsPosition {
@@ -89,48 +94,52 @@ flex-direction: row;
 display: flex;
 position: absolute;
 justify-content: space-between;
-width: 300px;
+width: 190px;
 }
 
 .drop-down {
-margin-top: 20px;
-width: 106px;
-height: 290px;
-z-index: 10px;
-display: inline-block;
-justify-content: space-between;
-flex-direction: column;
+	z-index: 5;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-top: 20px;
+	width: 106px;
+	height: 290px;
+	z-index: 10px;
+	display: none;
+	padding: 16px;
+	justify-content: center;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: var(--charcoal-grey);
+	box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
+	margin-left: 70px;
+ }
 
+ .lang-eng .drop-down {
+	left: initial;
+	right: 0;
+	margin-right: -106px;
+	margin-top: 52px;
+ }
+
+.arrow-down:hover + .drop-down {
+	display: flex;
 }
 
-.drop-down-menu {
-width: 106px;
-height: 290px;
-background-color: var(--charcoal-grey);
-box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
-position: relative;
-display: none;
+.drop-down:hover {
+	display: flex;
 }
 
-.drop-down:hover .drop-down-menu {
-display: flex;
-justify-content: center;
-flex-direction: row;
+
+.drop-down li {
+	list-style: none;
+	color: #fff;
 }
 
-.drop-down-menu ul {
-display: flex;
-justify-content: space-around;
-flex-direction: column;
-}
-
-.drop-down-menu li {
-list-style: none;
-}
-
-.drop-down-menu a {
-color: #fff;
-text-decoration: none;
+.drop-down a {
+	color: #fff;
+	text-decoration: none;
 
 }
 
@@ -263,7 +272,7 @@ justify-content: flex-start;
 
 .lang-eng {
 height: 50px;
-width: 280px;
+width: 150px;
 color: #fff;
 margin-left: 25px;
 margin-top: 150px;
@@ -279,41 +288,23 @@ margin-top: 20px;
 width: 106px;
 height: 290px;
 z-index: 10px;
-display: inline-block;
-justify-content: space-between;
-flex-direction: column;
-
-}
-
-.drop-down-menu {
-width: 106px;
-height: 290px;
-background-color: var(--charcoal-grey);
-box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
-position: relative;
 display: none;
+
 }
 
-.drop-down:hover .drop-down-menu {
-display: flex;
-justify-content: center;
-flex-direction: row;
+
+.arrow-down:hover + .drop-down {
+	display: flex;
 }
 
-.drop-down-menu ul {
-display: flex;
-justify-content: space-around;
-flex-direction: column;
+.drop-down:hover {
+	display: flex;
 }
 
-.drop-down-menu li {
-list-style: none;
-}
 
 .drop-down-menu a {
 color: #fff;
 text-decoration: none;
-
 }
 
 .arrow-down {
@@ -353,7 +344,6 @@ cursor:pointer;
 	}
 
 		render() {
-console.log(this.state.footer);
 			return(
 				<FooterStyled>
 				<div className="logo-position">
@@ -369,20 +359,16 @@ console.log(this.state.footer);
 							})
 						}
 
+						<img className="arrow-down" src="/static/data/downarrow_white.svg" alt="arrow"></img>
 						<div className="drop-down">
-							<img className="arrow-down" src="/static/data/downarrow_white.svg" alt="arrow"></img>
-								<div className="drop-down-menu">
-									<ul>
-										<li><a href="#">English</a></li>
-										<li><a href="#">Swedish</a></li>
-										<li><a href="#">Somali</a></li>
-										<li><a href="#">Persian</a></li>
-										<li><a href="#">Arabic</a></li>
-										<li><a href="#">Eritrea</a></li>
-									</ul>
-								</div>
-							</div>
+								<li>English</li>
+								<li>Swedish</li>
+								<li>Somali</li>
+								<li>Persian</li>
+								<li>Arabic</li>
+								<li>Eritrea</li>
 						</div>
+					</div>
 			<div className="menuItemsPosition">
 			{
 				this.state.footer.map((item, index) => {
@@ -393,7 +379,19 @@ console.log(this.state.footer);
 
 						{
 							item.acf.content && item.acf.content.map(item => {
-								return <li>{item.text}</li>
+								return <li>{item.text} {item.text === "Branches" && 
+								<Fragment>
+									<img className="arrow-down" src="/static/data/downarrow_white.svg" alt="arrow"></img>
+									<div className="drop-down">
+											<li><a href="/branches/">English</a></li>
+											<li><a href="/branches/">Swedish</a></li>
+											<li><a href="/branches/">Somali</a></li>
+											<li><a href="/branches/">Persian</a></li>
+											<li><a href="/branches/">Arabic</a></li>
+											<li><a href="/branches/">Eritrea</a></li>
+									</div>
+								</Fragment>
+								}</li>
 							})
 						}
 						</div>

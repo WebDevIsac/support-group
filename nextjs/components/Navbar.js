@@ -168,6 +168,10 @@ const NavbarStyled = styled.nav`
 			margin-right: 16px;
 		}
 
+		.tools img {
+			width: 12.3px;
+		}
+
 		.menu {
 			margin-top: 80px;
 			width: 80px;
@@ -247,8 +251,8 @@ const Navbar = ({ page, navbar, branches, languages }) => {
 				}
 			</ul>
 			<div className="tools">
-				<div onClick={handleBranch}>Branches &#9207;</div>
-				<div onClick={handleLanguage}>EN &#9207;</div>
+				<div onClick={handleBranch}>Branches <img src="../static/data/downarrow_white.svg"/></div>
+				<div onClick={handleLanguage}>EN <img src="../static/data/downarrow_white.svg"/></div>
 				<ul className="menu" id="branches">
 					{
 						branches.map((branch, index) => {

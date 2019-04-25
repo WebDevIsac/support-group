@@ -6,7 +6,7 @@ import Information from './Information';
 
 const ContactContainerStyled = styled.div`
 	height: 100%;
-	padding: 0 96px;
+	padding: 255px 96px 96px 96px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
