@@ -35,6 +35,9 @@ const InstagramFeedStyled = styled.div`
 	}
 
 	@media screen and (max-width: 768px) {
+		margin: 0 16px;
+		padding-bottom: 0;
+
 		iframe {
 			width: 100%;
 			height: 350px

@@ -23,8 +23,15 @@ const GoogleMapsStyled = styled.div`
 	}
 
 	@media screen and (max-width: 768px) {
-		iframe {
-			margin-left: -16px;
+		margin: 0;
+		margin-top: 80px;
+		padding: 0;
+
+		h1 {
+			margin: 0;
+			margin-bottom: 44px;
+			position: initial;
+			text-align: center;
 		}
 	}
 `;

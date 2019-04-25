@@ -38,9 +38,9 @@ const Branch = ({ branch }) => {
 			</BranchStyled>
 			<FacebookFeed/>
 			<Activities activities={branch.acf.activities}/>
-			<Contact/>
 			<InstagramFeed/>
 			<GoogleMaps branch={branch}/>
+			<Contact/>
 		</Fragment>
 	);
 };
