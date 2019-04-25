@@ -88,7 +88,7 @@ class Projects extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost/wp-json/wp/v2/projects?order=asc')
+		axios.get('http://localhost:8888/wp-json/wp/v2/projects?order=asc')
 		.then(response => {
 			this.setState({
 				projects: response.data

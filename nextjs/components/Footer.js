@@ -45,6 +45,8 @@ color: white;
 
 .menuItem li {
 margin-bottom: 10px;
+font-size: 14px;
+color: #E7EEED;
 }
 
 .menuItemsPosition {
@@ -82,7 +84,8 @@ justify-content: flex-start;
 
 .lang-eng {
 height: 50px;
-color: #fff;
+font-size: 14px;
+color: #E7EEED;
 margin-left: 250px;
 margin-top: 100px;
 flex-direction: row;
@@ -147,7 +150,7 @@ display: flex;
 flex-direction:column;
 justify-content: flex-start;
 left: 0;
-height: 1050px;
+height: 1000px;
 bottom: 0;
 width: 100vw;
 background-attachment: fixed;
@@ -164,12 +167,13 @@ padding:0;
 height: auto;
 /* top: 150px; */
 width:27%;
-margin-top: 20px;
+margin-top: 60px;
 }
 
 .menuItem:nth-child(4) {
-	width: 50%;
+width: 50%;
 }
+
 
 .menuItem li {
 margin-bottom: 10px;
@@ -246,7 +250,7 @@ height: 180px;
 display: flex;
 justify-content: space-evenly;
 margin-left: 290px;
-margin-top: 230px;
+margin-top: 350px;
 }
 
 .lang {
@@ -334,7 +338,7 @@ cursor:pointer;
 
 	componentDidMount(){
 		const api = process.env.WP_KEY;
-		axios.get(`http://localhost/wp-json/wp/v2/footer?order=asc`)
+		axios.get(`http://localhost:8888/wp-json/wp/v2/footer?order=asc`)
 		.then(res => {
 			let isMobile = window.innerWidth < 768 ? "social" : null
 			let filtered = res.data.filter(item => {
@@ -342,10 +346,10 @@ cursor:pointer;
 			});
 				let languages = res.data.find(item => item.slug == 'languages')
 				let images = res.data.find(item => item.slug == 'social')
-			this.setState({
-			footer: filtered,
-			social: images.acf.content,
-			languages: languages,
+				this.setState({
+				footer: filtered,
+				social: images.acf.content,
+				languages: languages,
 
  			});
 
@@ -356,19 +360,18 @@ cursor:pointer;
 		console.log(this.state.footer);
 			return(
 				<FooterStyled>
-				<div className="logo-position">
+					<div className="logo-position">
 				<Logo className="logo-image" color="white" width="200px"/>
 			</div>
 				<div className="lang">
 					{this.state.languages.title && <h4>{this.state.languages.title.rendered}</h4>}
 					</div>
-					<div className="lang-eng">
+						<div className="lang-eng">
 						{
 							this.state.languages.acf && this.state.languages.acf.content.map(item => {
 								return <h4>{item.text}</h4>
 							})
 						}
-
 						<div className="drop-down">
 							<img className="arrow-down" src="/static/data/downarrow_white.svg" alt="arrow"></img>
 								<div className="drop-down-menu">
@@ -383,32 +386,28 @@ cursor:pointer;
 								</div>
 							</div>
 						</div>
-			<div className="menuItemsPosition">
+					<div className="menuItemsPosition">
 			{
 				this.state.footer.map((item, index) => {
 					return (
-
-					<div key={index} className="menuItem">
-						<h4>{item.title.rendered}</h4>
-
-						{
-							item.acf.content && item.acf.content.map(item => {
-								return <li>{item.text}</li>
-							})
-						}
-							
-						</div>
+						<div key={index} className="menuItem">
+							<h4>{item.title.rendered}</h4>
+								{
+									item.acf.content && item.acf.content.map(item => {
+										return <li>{item.text}</li>
+									})
+								}
+							</div>
 						)
 					})
 				}
 
 				<div className="images">
-
 				{
 					this.state.social.map(image => {
 					return <img src={image.image}></img>
-
-				})}
+				}
+				)}
 				</div>
 			</div>
 

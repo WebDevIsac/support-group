@@ -48,7 +48,7 @@ class Section extends Component {
 }
 
 componentDidMount(){
-  axios.get(`http://localhost/wp-json/wp/v2/section`)
+  axios.get(`http://localhost:8888/wp-json/wp/v2/section`)
   .then(res => {
       this.setState({ section: res.data });
 

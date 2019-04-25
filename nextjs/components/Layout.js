@@ -20,7 +20,7 @@ class Layout extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost/wp-json/wp/v2/menus')
+		axios.get('http://localhost:8888/wp-json/wp/v2/menus')
 		.then(responseMenus => {
 			const navbar = responseMenus.data.find(item => item.slug === "navbar");
 			const branches = responseMenus.data.find(item => item.slug === "branches");

@@ -8,7 +8,7 @@ import Projects from './Projects';
 const ActivitiesStyled = styled.div`
 	position: relative;
 	margin: 40px 96px;
-	
+
 	h1 {
 		position: absolute;
 		top: 0;
@@ -105,7 +105,7 @@ const ActivitiesStyled = styled.div`
 			overflow:hidden;
 			position: relative;
 			width: 960px;
-			
+
 			&::before,
 			&::after {
 				@include white-gradient;
@@ -115,7 +115,7 @@ const ActivitiesStyled = styled.div`
 				width: 200px;
 				z-index: 2;
 			}
-			
+
 			&::after {
 				right: 0;
 				top: 0;
@@ -126,13 +126,13 @@ const ActivitiesStyled = styled.div`
 				left: 0;
 				top: 0;
 			}
-			
+
 			.slide-track {
 				animation: scroll 40s linear infinite;
 				display: flex;
 				width: calc(250px * 14);
 			}
-			
+
 			.slide {
 				height: 100px;
 				width: 250px;
@@ -154,7 +154,7 @@ class Activities extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost/wp-json/wp/v2/activities?order=asc')
+		axios.get('http://localhost:8888/wp-json/wp/v2/activities?order=asc')
 		.then(response => {
 			let filtered = response.data.filter(activity => {
 				return this.props.activities.find(id => activity.id === id);
