@@ -238,7 +238,7 @@ const FooterMenuStyled = styled.div`
 				
 				element.scrollIntoView({
 					behavior: "smooth",
-					block: "center"
+					block: "start"
 				});
 				history.replaceState(null,null,'/');
 			}
