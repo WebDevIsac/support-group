@@ -31,7 +31,11 @@ const ContainerStyled = styled.div`
 	img {
 		display: flex;
 		align-content: center;
-		width: 300px;
+		/* width: 300px; */
+		display: flex;
+		align-content: center;
+		width: 500px;
+
 	}
 
 	@media only screen and (max-width: 768px) {
@@ -41,7 +45,10 @@ const ContainerStyled = styled.div`
 		img {
 			display: flex;
 			align-content: center;
-			width: 200px;
+			/* width: 200px; */
+			display: flex;
+			align-content: center;
+			width: 300px;
 		}
 
 		.image-placement {
