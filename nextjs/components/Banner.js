@@ -73,6 +73,8 @@ const BannerStyled = styled.div`
 
 		li {
 			margin-top: 10px;
+			font-size: 14px;
+			color: #FFFFFF;
 		}
 
 		/* .bannerItems {

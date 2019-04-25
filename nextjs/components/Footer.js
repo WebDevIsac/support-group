@@ -13,7 +13,6 @@ display: flex;
 justify-content:space-between;
 box-sizing:border-box;
 flex-direction:column;
-/* padding:50px; */
 bottom: 0;
 left: 0;
 height: 750px;
@@ -50,6 +49,8 @@ color: white;
 .menuItem li {
 margin-bottom: 10px;
 position: relative;
+font-size: 14px;
+color: #E7EEED;
 }
 
 .menuItemsPosition {
@@ -87,7 +88,8 @@ justify-content: flex-start;
 
 .lang-eng {
 height: 50px;
-color: #fff;
+font-size: 14px;
+color: #E7EEED;
 margin-left: 250px;
 margin-top: 100px;
 flex-direction: row;
@@ -156,7 +158,7 @@ display: flex;
 flex-direction:column;
 justify-content: flex-start;
 left: 0;
-height: 1050px;
+height: 1000px;
 bottom: 0;
 width: 100vw;
 background-attachment: fixed;
@@ -173,12 +175,13 @@ padding:0;
 height: auto;
 /* top: 150px; */
 width:27%;
-margin-top: 20px;
+margin-top: 60px;
 }
 
 .menuItem:nth-child(4) {
-	width: 50%;
+width: 50%;
 }
+
 
 .menuItem li {
 margin-bottom: 10px;
@@ -255,7 +258,7 @@ height: 180px;
 display: flex;
 justify-content: space-evenly;
 margin-left: 290px;
-margin-top: 230px;
+margin-top: 350px;
 }
 
 .lang {
@@ -333,10 +336,10 @@ cursor:pointer;
 			});
 				let languages = res.data.find(item => item.slug == 'languages')
 				let images = res.data.find(item => item.slug == 'social')
-			this.setState({
-			footer: filtered,
-			social: images.acf.content,
-			languages: languages,
+				this.setState({
+				footer: filtered,
+				social: images.acf.content,
+				languages: languages,
 
  			});
 
@@ -346,13 +349,13 @@ cursor:pointer;
 		render() {
 			return(
 				<FooterStyled>
-				<div className="logo-position">
+					<div className="logo-position">
 				<Logo className="logo-image" color="white" width="200px"/>
 			</div>
 				<div className="lang">
 					{this.state.languages.title && <h4>{this.state.languages.title.rendered}</h4>}
 					</div>
-					<div className="lang-eng">
+						<div className="lang-eng">
 						{
 							this.state.languages.acf && this.state.languages.acf.content.map(item => {
 								return <h4>{item.text}</h4>
@@ -383,12 +386,12 @@ cursor:pointer;
 								<Fragment>
 									<img className="arrow-down" src="/static/data/downarrow_white.svg" alt="arrow"></img>
 									<div className="drop-down">
-											<li><a href="/branches/">English</a></li>
-											<li><a href="/branches/">Swedish</a></li>
-											<li><a href="/branches/">Somali</a></li>
-											<li><a href="/branches/">Persian</a></li>
-											<li><a href="/branches/">Arabic</a></li>
-											<li><a href="/branches/">Eritrea</a></li>
+											<li><a href="/branches/">Restadgård</a></li>
+											<li><a href="/branches/">Götene</a></li>
+											<li><a href="/branches/">Halmstad</a></li>
+											<li><a href="/branches/">Vänerborg</a></li>
+											<li><a href="/branches/">Lidköping</a></li>
+											<li><a href="/branches/">Stuttgart</a></li>
 									</div>
 								</Fragment>
 								}</li>
@@ -400,12 +403,11 @@ cursor:pointer;
 				}
 
 				<div className="images">
-
 				{
 					this.state.social.map(image => {
 					return <img src={image.image}></img>
-
-				})}
+				}
+				)}
 				</div>
 			</div>
 

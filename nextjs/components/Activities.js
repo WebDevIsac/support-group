@@ -8,7 +8,7 @@ import Projects from './Projects';
 const ActivitiesStyled = styled.div`
 	position: relative;
 	margin: 40px 96px;
-	
+
 	h1 {
 		position: absolute;
 		top: 0;
@@ -54,8 +54,12 @@ const ActivitiesStyled = styled.div`
 			flex-direction: row;
 			align-items: flex-start;
 			padding: 0;
-			overflow: hidden;
-			overflow-x: scroll;
+			animation: scroll 30s linear infinite;
+		}
+
+		@keyframes scroll {
+			0% { transform: translateX(0); }
+			100% { transform: translateX(calc(-250px * 7))}
 		}
 
 		div {
@@ -72,77 +76,6 @@ const ActivitiesStyled = styled.div`
 			margin-block-start: 0;
     		/* margin-block-end: 0; */
 		}
-
-
-
-		body {
-			align-items: center;
-			background: #E3E3E3;
-			display: flex;
-			height: 100vh;
-			justify-content: center;
-		}
-
-		/* @mixin white-gradient {
-			background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
-		}
-
-		$animationSpeed: 40s;
-
-		// Animation
-		@keyframes scroll {
-			0% { transform: translateX(0); }
-			100% { transform: translateX(calc(-250px * 7))}
-		}
-
-
-		// Styling
-		.slider {
-			background: white;
-			box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
-			height: 100px;
-			margin: auto;
-			overflow:hidden;
-			position: relative;
-			width: 960px;
-			
-			&::before,
-			&::after {
-				@include white-gradient;
-				content: "";
-				height: 100px;
-				position: absolute;
-				width: 200px;
-				z-index: 2;
-			}
-			
-			&::after {
-				right: 0;
-				top: 0;
-				transform: rotateZ(180deg);
-			}
-
-			&::before {
-				left: 0;
-				top: 0;
-			}
-			
-			.slide-track {
-				animation: scroll 40s linear infinite;
-				display: flex;
-				width: calc(250px * 14);
-			}
-			
-			.slide {
-				height: 100px;
-				width: 250px;
-			}
-		} */
-
-
-
-
-
 	}
 `;
 
