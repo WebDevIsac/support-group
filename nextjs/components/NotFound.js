@@ -35,6 +35,23 @@ const NotFoundStyled = styled.div`
 		height: 12.6px;
 		margin: 0;
 	}
+
+	@media screen and (max-width: 768px) {
+
+		height: 80vh;
+
+		img {
+			width: 266px;
+			margin: 0;
+			height: 134px;
+		}
+
+		h3 {
+			width: 265px;
+			text-align: center;
+		}
+
+	}
 `;
 
 class NotFound extends Component {

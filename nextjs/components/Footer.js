@@ -65,13 +65,14 @@ justify-content: center;
 
 .images {
 position: absolute;
+bottom: 0;
+right: 0;
 flex-direction: column;
 height: 180px;
 display: flex;
 justify-content: space-evenly;
-margin-left: 380px;
-margin-top: 50px;
-
+margin-bottom: 260px;
+margin-right: 295px;
 }
 
 .lang {
@@ -257,8 +258,8 @@ flex-direction: column;
 height: 180px;
 display: flex;
 justify-content: space-evenly;
-margin-left: 290px;
-margin-top: 350px;
+margin-right: 16px;
+margin-bottom: 270px;
 }
 
 .lang {
@@ -386,12 +387,12 @@ cursor:pointer;
 								<Fragment>
 									<img className="arrow-down" src="/static/data/downarrow_white.svg" alt="arrow"></img>
 									<div className="drop-down">
-											<li><a href="/branches/">Restadgård</a></li>
-											<li><a href="/branches/">Götene</a></li>
-											<li><a href="/branches/">Halmstad</a></li>
-											<li><a href="/branches/">Vänerborg</a></li>
-											<li><a href="/branches/">Lidköping</a></li>
-											<li><a href="/branches/">Stuttgart</a></li>
+											<li><a href="/branches/Restadgård">Restadgård</a></li>
+											<li><a href="/branches/Götene">Götene</a></li>
+											<li><a href="/branches/Halmstad">Halmstad</a></li>
+											<li><a href="/branches/Vänerborg">Vänerborg</a></li>
+											<li><a href="/branches/Lidköping">Lidköping</a></li>
+											<li><a href="/branches/Stuttgart">Stuttgart</a></li>
 									</div>
 								</Fragment>
 								}</li>

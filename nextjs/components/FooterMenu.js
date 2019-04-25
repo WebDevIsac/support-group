@@ -92,7 +92,6 @@ const FooterMenuStyled = styled.div`
 			width: 204px;
 		}
 
-
 		.menu li {
 			font-size: var(--h2-size);
 			font-weight: var(--h2-weight);
@@ -104,7 +103,6 @@ const FooterMenuStyled = styled.div`
 			display: flex;
 			flex-direction: column;
 			position: relative;
-			/* overflow-y: auto; */
 			width: 100%;
 			height: auto;
 			background-color: var(--pink);
@@ -209,25 +207,40 @@ const FooterMenuStyled = styled.div`
 					footer.classList.add('showMenu');
 				}
 			}
+
 			setTimeout(() => {
+				const urlQuery = window.location.search;
+				const footer = document.querySelector('#footer-menu');
 				const menu = document.querySelectorAll('.footer-menu .menu li');
 				const menuArray = Array.from(menu);
-				menuArray.map((item, index) => {
+				if (urlQuery) {
+					setTimeout(() => {
+						const newIndex = urlQuery[1];
+						footer.classList.remove('showMenu');
+						smoothScroll(newIndex);
+					}, 4000);
+				}
+				menuArray.forEach((item, index) => {
 					item.addEventListener('click', () => {
-						scroll(index);
+						if (this.props.page !== "start") {
+							window.location = `/?${index}`;
+						}
+						else {
+							footer.classList.remove('showMenu');
+							smoothScroll(index);
+						}
 					});
 				});
-			}, 500);
-			
-			const scroll = (index) => {
-				const footer = document.querySelector('#footer-menu');
-				footer.classList.remove('showMenu');
+			}, 200);
+
+			const smoothScroll = (index) => {
 				const element = document.getElementById(index);
 				
 				element.scrollIntoView({
 					behavior: "smooth",
-					block: "start"
+					block: "center"
 				});
+				history.replaceState(null,null,'/');
 			}
 
 			const handleDropDown = (e) => {

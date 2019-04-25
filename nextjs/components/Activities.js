@@ -54,17 +54,12 @@ const ActivitiesStyled = styled.div`
 			flex-direction: row;
 			align-items: flex-start;
 			padding: 0;
-			animation: scroll 30s linear infinite;
-		}
-
-		@keyframes scroll {
-			0% { transform: translateX(0); }
-			100% { transform: translateX(calc(-250px * 7))}
+			overflow-x: auto;
 		}
 
 		div {
 			min-width: 196px;
-			margin-left: 16px;
+			margin-left: 32px;
 		}
 
 		div:first-child {

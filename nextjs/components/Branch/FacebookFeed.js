@@ -40,7 +40,7 @@ const FacebookFeedStyled = styled.div`
 
 		section {
 			width: 100%;
-			height: 386px;
+			height: 100%;
 			transform: scale(1);
 		}
 
