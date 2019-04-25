@@ -53,7 +53,7 @@ const BannerStyled = styled.div`
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
-			margin: 15px;
+			margin: 20px;
 			width: 100%;
 			list-style: none;
 			color: white;
@@ -64,7 +64,7 @@ const BannerStyled = styled.div`
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
-			margin: 15px;
+			margin: 20px;
 			flex-wrap: wrap;
 			width: 100%;
 			list-style: none;

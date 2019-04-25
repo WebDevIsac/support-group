@@ -3,135 +3,178 @@ import axios from "axios";
 import Banner from './Banner';
 import Logo from './Logo';
 import Navbar from './Navbar';
+import Link from 'next/link';
 
 import styled from 'styled-components';
 
 const FooterStyled = styled.div`
-	background-color: #212121;
-	display: flex;
-	justify-content:space-between;
-	box-sizing:border-box;
-	flex-direction:column;
-	/* padding:50px; */
-	bottom: 0;
-	left: 0;
-	height: 650px;
-	width: 100vw;
-	position: relative;
+background-color: #212121;
+display: flex;
+justify-content:space-between;
+box-sizing:border-box;
+flex-direction:column;
+/* padding:50px; */
+bottom: 0;
+left: 0;
+height: 750px;
+width: 100vw;
+position: relative;
 
 
-	.logo-position {
-		position:static;
-		display: flex;
-		padding: 0;
-		width: 350px;
-		justify-content: flex-start;
-		margin-left: 50px;
-		margin-top: 30px;
-	}
-
-
-	.menuItem {
-		list-style: none;
-		margin-right: 20px;
-		width: 33%;
-		height: 100px;
-		color: white;
-	}
-
-	.menuItemsPosition {
-		height: 400px;
-		margin-left: 250px;
-		flex-direction: column;
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-	}
-
-
-	.images {
-	position: absolute;
-	flex-direction: column;
-	height: 180px;
-	display: flex;
-	justify-content: space-evenly;
-	margin-left: 380px;
-	margin-top: 50px;
-
-}
-
-	.lang {
-		height: 200px;
-		color: #fff;
-		margin-top: 55px;
-		position: absolute;
-		margin-left: 250px;
-		flex-direction: column;
-		display: flex;
-		justify-content: flex-start;
-	}
-
-
-	.lang-eng {
-		height: 50px;
-		color: #fff;
-		margin-left: 250px;
-		margin-top: 100px;
-		flex-direction: row;
-		display: flex;
-		position: absolute;
-		justify-content: space-between;
-		width: 150px;
-	}
-
-
-	.drop-down li {
-	/* display: none; */
-	list-style: none;
+.logo-position {
+position:static;
+display: flex;
+padding: 0;
+width: 350px;
+justify-content: flex-start;
+margin-left: 50px;
+margin-top: 30px;
 }
 
 
-	.arrow-down {
-	margin-top: 20px;
-	cursor:pointer;
-	}
+.menuItem {
+list-style: none;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+margin-right: 20px;
+width: 33%;
+height: 180px;
+color: white;
+}
 
-	.arrow-position {
+.menuItem li {
+margin-bottom: 10px;
+}
 
-	/* height: 200px;
-	margin-top: 10px;
-	position: absolute;
-	margin-left: 25px;
-	flex-direction: column;
-	display: flex;
-	justify-content: flex-start; */
+.menuItemsPosition {
+height: 400px;
+margin-left: 250px;
+flex-direction: column;
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
 
-	}
+
+.images {
+position: absolute;
+flex-direction: column;
+height: 180px;
+display: flex;
+justify-content: space-evenly;
+margin-left: 380px;
+margin-top: 50px;
+
+}
+
+.lang {
+height: 200px;
+color: #fff;
+margin-top: 58px;
+position: absolute;
+margin-left: 250px;
+flex-direction: column;
+display: flex;
+justify-content: flex-start;
+}
+
+
+.lang-eng {
+height: 50px;
+color: #fff;
+margin-left: 250px;
+margin-top: 100px;
+flex-direction: row;
+display: flex;
+position: absolute;
+justify-content: space-between;
+width: 300px;
+}
+
+.drop-down {
+margin-top: 20px;
+width: 106px;
+height: 290px;
+z-index: 10px;
+display: inline-block;
+justify-content: space-between;
+flex-direction: column;
+
+}
+
+.drop-down-menu {
+width: 106px;
+height: 290px;
+background-color: var(--charcoal-grey);
+box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
+position: relative;
+display: none;
+}
+
+.drop-down:hover .drop-down-menu {
+display: flex;
+justify-content: center;
+flex-direction: row;
+}
+
+.drop-down-menu ul {
+display: flex;
+justify-content: space-around;
+flex-direction: column;
+}
+
+.drop-down-menu li {
+list-style: none;
+}
+
+.drop-down-menu a {
+color: #fff;
+text-decoration: none;
+
+}
+
+.arrow-down {
+margin-top: 5px;
+cursor:pointer;
+}
+
 
 @media screen and (max-width: 768px) {
 
-	background-color: #212121;
-	display: flex;
-	flex-direction:column;
-	justify-content: flex-start;
-	left: 0;
-	height: 1050px;
-	bottom: 0;
-	width: 100vw;
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	overflow-x: hidden;
+background-color: #212121;
+display: flex;
+flex-direction:column;
+justify-content: flex-start;
+left: 0;
+height: 1050px;
+bottom: 0;
+width: 100vw;
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+overflow-x: hidden;
 
 .menuItem {
 display: flex;
 flex-direction: column;
+justify-content: flex-start;
 padding:0;
-height: 0;
-top: 150px;
+height: auto;
+/* top: 150px; */
 width:27%;
-margin-top: 0;
+margin-top: 20px;
+}
+
+.menuItem:nth-child(4) {
+	width: 50%;
+}
+
+.menuItem li {
+margin-bottom: 10px;
+font-size: 14px;
+color: #E7EEED;
 }
 
 .logo-position {
@@ -145,31 +188,31 @@ margin:0;
 
 
 .menuItemsPosition {
-height: 400px;
+height: 550px;
 display: flex;
 padding: 25px;
-align-items: center;
+align-items: flex-start;
 justify-content: space-between;
 margin: 0;
 flex-wrap: wrap;
 }
 
 
-.footer-menu li {
-	list-style: none;
-	margin-top: 30px;
-	margin-left: 20px;
+/* .footer-menu li {
+list-style: none;
+margin-top: 30px;
+margin-left: 10px;
 
 }
 
 .footer-menu li a {
-	font-size: 35px;
-	text-decoration: none;
-	color: white;
-}
+font-size: 35px;
+text-decoration: none;
+color: white;
+} */
 
 .footer-image {
-	margin-top: 50px;
+margin-top: 50px;
 }
 
 
@@ -202,52 +245,80 @@ flex-direction: column;
 height: 180px;
 display: flex;
 justify-content: space-evenly;
-margin-left: 280px;
-margin-top: 280px;
+margin-left: 290px;
+margin-top: 230px;
 }
 
 .lang {
-	height: 200px;
-	color: #fff;
-	margin-top: 100px;
-	position: absolute;
-	margin-left: 25px;
-	flex-direction: column;
-	display: flex;
-	justify-content: flex-start;
+height: 200px;
+color: #fff;
+margin-top: 100px;
+position: absolute;
+margin-left: 25px;
+flex-direction: column;
+display: flex;
+justify-content: flex-start;
 }
 
 
 .lang-eng {
-	height: 50px;
-	width: 150px;
-	color: #fff;
-	margin-left: 25px;
-	margin-top: 150px;
-	justify-content: space-between;
-	flex-direction: row;
-	display: flex;
-	position: absolute;
+height: 50px;
+width: 280px;
+color: #fff;
+margin-left: 25px;
+margin-top: 150px;
+justify-content: space-between;
+flex-direction: row;
+display: flex;
+position: absolute;
 
 }
 
 .drop-down {
-width: 30px;
-height: 70px;
-background-color: pink;
+margin-top: 20px;
+width: 106px;
+height: 290px;
+z-index: 10px;
+display: inline-block;
+justify-content: space-between;
+flex-direction: column;
+
 }
 
-.drop-down li {
-/* display: none; */
+.drop-down-menu {
+width: 106px;
+height: 290px;
+background-color: var(--charcoal-grey);
+box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.24);
+position: relative;
+display: none;
+}
+
+.drop-down:hover .drop-down-menu {
+display: flex;
+justify-content: center;
+flex-direction: row;
+}
+
+.drop-down-menu ul {
+display: flex;
+justify-content: space-around;
+flex-direction: column;
+}
+
+.drop-down-menu li {
 list-style: none;
 }
 
-.arrow-position {
+.drop-down-menu a {
+color: #fff;
+text-decoration: none;
 
-height: 200px;
-margin-top: 10px;
-position: absolute;
-margin-left: 25px;
+}
+
+.arrow-down {
+margin-top: 5px;
+cursor:pointer;
 }
 
 }
@@ -265,9 +336,9 @@ margin-left: 25px;
 		const api = process.env.WP_KEY;
 		axios.get(`http://localhost:8888/wp-json/wp/v2/footer?order=asc`)
 		.then(res => {
+			let isMobile = window.innerWidth < 768 ? "social" : null
 			let filtered = res.data.filter(item => {
-				return item.slug != "banner" && item.slug != "languages"
-
+				return item.slug != "banner" && item.slug != "languages" && item.slug != isMobile
 			});
 				let languages = res.data.find(item => item.slug == 'languages')
 				let images = res.data.find(item => item.slug == 'social')
@@ -282,12 +353,13 @@ margin-left: 25px;
 	}
 
 		render() {
+console.log(this.state.footer);
 			return(
 				<FooterStyled>
 				<div className="logo-position">
 				<Logo className="logo-image" color="white" width="200px"/>
 			</div>
-			<div className="lang">
+				<div className="lang">
 					{this.state.languages.title && <h4>{this.state.languages.title.rendered}</h4>}
 					</div>
 					<div className="lang-eng">
@@ -296,16 +368,21 @@ margin-left: 25px;
 								return <h4>{item.text}</h4>
 							})
 						}
-						<div className="menu-position">
+
+						<div className="drop-down">
 							<img className="arrow-down" src="/static/data/downarrow_white.svg" alt="arrow"></img>
-							<nav className="drop-down">
-								<ul>
-									<li>En</li>
-									<li>Swe</li>
-								</ul>
-							</nav>
-					</div>
-				</div>
+								<div className="drop-down-menu">
+									<ul>
+										<li><a href="#">English</a></li>
+										<li><a href="#">Swedish</a></li>
+										<li><a href="#">Somali</a></li>
+										<li><a href="#">Persian</a></li>
+										<li><a href="#">Arabic</a></li>
+										<li><a href="#">Eritrea</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
 			<div className="menuItemsPosition">
 			{
 				this.state.footer.map((item, index) => {
