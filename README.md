@@ -1,6 +1,8 @@
 # Support Group Network
 School assignment to design and make a new site for the nonprofit organization Support Group Network.
 
+This is their current site [Support Group](https://www.supportgroup.se/)
+
 ## Backend
 This runs from a `WordPress REST API` exclusive to Support Group Network.
 
